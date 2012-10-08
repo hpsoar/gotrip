@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="gvy-5w-5BN">
+    <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+    </dependencies>
+    <scenes>
+        <!--Trip List Table View Controller - 旅游记账-->
+        <scene sceneID="MUB-Eb-Sr8">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hRi-UQ-3wT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="vhH-yr-k42" customClass="TripListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" id="3ae-LW-rUr">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView key="tableFooterView" hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="empty-trip.png" id="Mn2-yo-Pud">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="旅游记账" id="Paa-3X-HHe"/>
+                    <connections>
+                        <outlet property="emptyTripListImageView" destination="Mn2-yo-Pud" id="jzv-SO-W9P"/>
+                        <segue destination="dXR-Vk-sUl" kind="push" identifier="Show Trip Detail" id="kG0-kf-NOn"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-2352" y="-297"/>
+        </scene>
+        <!--Add Member To Trip View Controller - 添加旅行同伴-->
+        <scene sceneID="Bip-e2-RTi">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N5r-x2-Wjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="7Mk-Xg-GOu" customClass="AddMemberToTripViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="QYY-3L-Imc">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="FsL-xS-Gv2">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="同伴名字" minimumFontSize="17" clearButtonMode="whileEditing" id="xnX-X4-qfF">
+                                    <rect key="frame" x="9" y="30" width="220" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ddf-17-Siu">
+                                    <rect key="frame" x="237" y="27" width="72" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="添加">
+                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addMember:" destination="7Mk-Xg-GOu" eventType="touchUpInside" id="PHQ-3c-H3z"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberCell" id="RIh-GS-cgi">
+                                <rect key="frame" x="0.0" y="117" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7Mk-Xg-GOu" id="PxZ-MG-FsI"/>
+                            <outlet property="delegate" destination="7Mk-Xg-GOu" id="4e8-zj-u5t"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="添加旅行同伴" id="ZJv-LB-ZQW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FOB-uL-3aV">
+                            <connections>
+                                <action selector="doneWithChoosing:" destination="7Mk-Xg-GOu" id="jet-ym-RTZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="xnX-X4-qfF" id="wAh-xw-d18"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-688" y="880"/>
+        </scene>
+        <!--Trip Detail Table View Controller - 旅游详情-->
+        <scene sceneID="gtb-wl-bZq">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBx-QJ-CZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="dXR-Vk-sUl" customClass="TripDetailTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="qwD-ND-jeC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2pu-3b-sF9">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="dXR-Vk-sUl" id="bio-cO-LOD"/>
+                            <outlet property="delegate" destination="dXR-Vk-sUl" id="3Px-Fi-efH"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Members" id="Fm2-WN-gnF"/>
+                    <navigationItem key="navigationItem" title="旅游详情" id="kVa-4D-1TS"/>
+                    <connections>
+                        <segue destination="BRw-uu-KxJ" kind="push" identifier="Show Trip Activities" id="CaZ-1p-K3k"/>
+                        <segue destination="cEE-Gf-XgI" kind="modal" identifier="Add Trip Member" id="V6Y-XT-s6Y"/>
+                        <segue destination="uVh-8u-Ycz" kind="push" identifier="Show Trip Activities For User" id="AQq-W3-PfY"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-1907" y="-297"/>
+        </scene>
+        <!--Add Activity View Controller-->
+        <scene sceneID="tUJ-GJ-3KW">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Z8-T5-7cH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="gOK-Mm-aC7" customClass="AddActivityViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q4y-sl-zVo">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CostInputCell" id="zLm-6e-IVy" customClass="CostInputCell">
+                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mq7-wB-zny">
+                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Eat Food" textAlignment="right" minimumFontSize="17" id="krp-9N-sBw">
+                                            <rect key="frame" x="70" y="7" width="216" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="titleLabel" destination="mq7-wB-zny" id="aQj-Sp-eb4"/>
+                                    <outlet property="valueTextField" destination="krp-9N-sBw" id="bmC-XE-VaA"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TdG-9G-zAj">
+                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="sVZ-M0-R2j">
+                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$123.00" textAlignment="right" minimumFontSize="17" id="HFW-Ze-gXo">
+                                            <rect key="frame" x="70" y="7" width="218" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="gOK-Mm-aC7" id="bUd-bJ-NBO"/>
+                            <outlet property="delegate" destination="gOK-Mm-aC7" id="s8Y-OT-rvC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fha-eS-XfT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7Tw-0O-cZc">
+                            <connections>
+                                <action selector="cancel:" destination="gOK-Mm-aC7" id="h5v-xd-acF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="f9V-Ue-ciN">
+                            <connections>
+                                <action selector="addActivity:" destination="gOK-Mm-aC7" id="GZH-dm-ySu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="17" y="269"/>
+        </scene>
+        <!--User Trip Activities View Controller-->
+        <scene sceneID="3Xr-dB-fbv">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94n-Yb-Ebm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="uVh-8u-Ycz" customClass="UserTripActivitiesViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6Ne-YF-pgY">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="uVh-8u-Ycz" id="QyL-JK-E8D"/>
+                            <outlet property="delegate" destination="uVh-8u-Ycz" id="xeE-Cx-2GU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Hg2-cR-I50">
+                        <barButtonItem key="rightBarButtonItem" title="Info" id="lm0-op-IRe">
+                            <connections>
+                                <action selector="showMemberInfo:" destination="uVh-8u-Ycz" id="a7H-ai-fY2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Iyo-vM-XqN" kind="push" identifier="Show Activity Detail" id="leV-wZ-kvJ"/>
+                        <segue destination="z7H-jH-JX5" kind="push" identifier="Show Member Info" id="q7G-MA-e0S"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-1218" y="-1041"/>
+        </scene>
+        <!--Member Info View Controller-->
+        <scene sceneID="asl-SI-8J1">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wdq-dS-I7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="z7H-jH-JX5" customClass="MemberInfoViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ujm-11-jX9">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="sGm-au-VU8">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="z7H-jH-JX5" id="MOj-yZ-Y35"/>
+                            <outlet property="delegate" destination="z7H-jH-JX5" id="JRR-tg-ujd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="BuO-tF-MWz"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-675" y="-1131"/>
+        </scene>
+        <!--Trip Activities View Controller - 花费清单-->
+        <scene sceneID="v0J-aO-wbO">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4fp-3B-Har" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="BRw-uu-KxJ" customClass="TripActivitiesViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jBl-Qp-Csf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="BRw-uu-KxJ" id="VCR-mX-haN"/>
+                            <outlet property="delegate" destination="BRw-uu-KxJ" id="TGQ-Up-5j6"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Activities" id="b52-A0-NVU"/>
+                    <navigationItem key="navigationItem" title="花费清单" id="5Pi-PO-GbF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3RE-6O-url">
+                            <connections>
+                                <action selector="addActivity:" destination="BRw-uu-KxJ" id="jbr-8z-M1C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Mqj-pc-JEp" kind="modal" identifier="Add Activity" id="2ai-Ka-DVG"/>
+                        <segue destination="Iyo-vM-XqN" kind="push" identifier="Show Activity Detail" id="qVF-df-GNu"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-1256" y="-297"/>
+        </scene>
+        <!--Activity Detail View Controller - 花费明细-->
+        <scene sceneID="9xh-iS-xPc">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bke-Eh-BE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Iyo-vM-XqN" customClass="ActivityDetailViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ic7-gY-UoQ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DateInputTableViewCell" id="Kky-4E-iys" customClass="DateInputTableViewCell">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="5ud-3U-eww">
+                                            <rect key="frame" x="20" y="11" width="55" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="j4t-8a-Por">
+                                            <rect key="frame" x="83" y="6" width="192" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="titleLabel" destination="5ud-3U-eww" id="rcO-jO-f6l"/>
+                                    <outlet property="valueTextField" destination="j4t-8a-Por" id="79U-Qm-5Xb"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Iyo-vM-XqN" id="LTY-jf-nGY"/>
+                            <outlet property="delegate" destination="Iyo-vM-XqN" id="DEk-cY-y6E"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="花费明细" id="yWb-pK-EYg"/>
+                    <connections>
+                        <segue destination="Qnh-Ab-sdZ" kind="push" identifier="Choose Activity Payer" id="uYO-7j-Mzw"/>
+                        <segue destination="kmE-Aa-oGo" kind="push" identifier="Choose Activity Member" id="tWb-Bq-Pr9"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-633" y="-465"/>
+        </scene>
+        <!--Choose Activity Member View Controller - 选择参与者-->
+        <scene sceneID="73a-KX-QzH">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9iU-vC-O0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="kmE-Aa-oGo" customClass="ChooseActivityMemberViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CxR-jL-ebr">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rUM-M9-HIK">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kmE-Aa-oGo" id="lBY-YD-Ek1"/>
+                            <outlet property="delegate" destination="kmE-Aa-oGo" id="8jn-sA-Du0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="选择参与者" id="5Fb-8t-HoK"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="29" y="-1100"/>
+        </scene>
+        <!--Choose Payer View Controller - 选择付款人-->
+        <scene sceneID="6O7-ly-L6v">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="41P-Ul-dtc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Qnh-Ab-sdZ" customClass="ChoosePayerViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wr4-pj-2zQ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TeJ-DZ-Qep">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Qnh-Ab-sdZ" id="8ql-R6-hYb"/>
+                            <outlet property="delegate" destination="Qnh-Ab-sdZ" id="Qv1-Ju-4TK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="选择付款人" id="R8R-6Z-dWA"/>
+                    <connections>
+                        <segue destination="o6b-uz-mOE" kind="modal" identifier="Add Pay" id="gDX-BG-cBi"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-15" y="-431"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Qxw-nt-bHz">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uob-fb-N6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="gvy-5w-5BN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6wB-iH-72D">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vhH-yr-k42" kind="relationship" relationship="rootViewController" id="fPE-c9-Hr7"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-2786" y="-297"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="E79-jo-s1V">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qFF-rB-Xd7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="cEE-Gf-XgI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7k8-FB-nAx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7Mk-Xg-GOu" kind="relationship" relationship="rootViewController" id="tCG-vU-fJN"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1256" y="464"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pCX-go-Jko">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uIH-82-ZPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="Mqj-pc-JEp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ucF-Lj-OTH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gOK-Mm-aC7" kind="relationship" relationship="rootViewController" id="0SN-34-L0G"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-696" y="225"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JlR-EL-QOx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAp-nM-R9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="o6b-uz-mOE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="xkk-jZ-qmB"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zfD-h5-v9M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nLi-tw-tti" kind="relationship" relationship="rootViewController" id="zdz-iC-Mhs"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="516" y="-439"/>
+        </scene>
+        <!--Add Pay View Controller-->
+        <scene sceneID="C3w-Wh-LaG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WsQ-Zk-zDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="nLi-tw-tti" customClass="AddPayViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2lN-ip-Xpr">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="b6M-ze-995">
+                                <rect key="frame" x="43" y="25" width="232" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="a0u-Z4-P2j">
+                                <rect key="frame" x="43" y="53" width="232" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bmV-fr-M57"/>
+                    <connections>
+                        <outlet property="payAmountTextField" destination="a0u-Z4-P2j" id="Jte-an-ZmM"/>
+                        <outlet property="titleLabel" destination="b6M-ze-995" id="6Xk-jU-SZG"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1022" y="-401"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="empty-trip.png" width="320" height="416"/>
+    </resources>
+    <classes>
+        <class className="ActivityDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityDetailViewController.h"/>
+        </class>
+        <class className="AddActivityViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddActivityViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addActivity:"/>
+                <relationship kind="action" name="cancel:"/>
+            </relationships>
+        </class>
+        <class className="AddMemberToTripViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddMemberToTripViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addMember:"/>
+                <relationship kind="action" name="doneWithChoosing:"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="AddPayViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPayViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="amountTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChooseActivityMemberViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooseActivityMemberViewController.h"/>
+        </class>
+        <class className="ChoosePayerViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChoosePayerViewController.h"/>
+        </class>
+        <class className="CostInputCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CostInputCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="valueTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="DateInputTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DateInputTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="valueTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MemberInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MemberInfoViewController.h"/>
+        </class>
+        <class className="TripActivitiesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TripActivitiesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addActivity:"/>
+            </relationships>
+        </class>
+        <class className="TripDetailTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TripDetailTableViewController.h"/>
+        </class>
+        <class className="TripListTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TripListTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emptyTripListImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="UserTripActivitiesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserTripActivitiesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showMemberInfo:"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="leV-wZ-kvJ"/>
+    </inferredMetricsTieBreakers>
+</document>

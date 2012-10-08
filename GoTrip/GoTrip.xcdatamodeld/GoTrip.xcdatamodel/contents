@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="11E53" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Activity" representedClassName="Activity" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="activities" inverseEntity="Member" syncable="YES"/>
+        <relationship name="pays" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pay" inverseName="activity" inverseEntity="Pay" syncable="YES"/>
+        <relationship name="trip" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="activities" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <entity name="Member" representedClassName="Member" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qq" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="members" inverseEntity="Activity" syncable="YES"/>
+        <relationship name="pays" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pay" inverseName="payer" inverseEntity="Pay" syncable="YES"/>
+        <relationship name="trips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trip" inverseName="members" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <entity name="Pay" representedClassName="Pay" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="activity" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="pays" inverseEntity="Activity" syncable="YES"/>
+        <relationship name="payer" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Member" inverseName="pays" inverseEntity="Member" syncable="YES"/>
+    </entity>
+    <entity name="Trip" representedClassName="Trip" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Activity" inverseName="trip" inverseEntity="Activity" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="trips" inverseEntity="Member" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Activity" positionX="441" positionY="300" width="128" height="150"/>
+        <element name="Member" positionX="-63" positionY="333" width="128" height="150"/>
+        <element name="Trip" positionX="187" positionY="189" width="128" height="135"/>
+        <element name="Pay" positionX="198" positionY="531" width="128" height="90"/>
+    </elements>
+</model>

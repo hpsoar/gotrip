@@ -1,0 +1,543 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B0227ED61621229800AED747 /* Datetime+FormattedString.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227ED51621229800AED747 /* Datetime+FormattedString.m */; };
+		B0227ED81621291F00AED747 /* MemberCostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0227ED71621291F00AED747 /* MemberCostCell.xib */; };
+		B0227EE1162142D500AED747 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EE0162142D500AED747 /* ActivityDetailViewController.m */; };
+		B0227EE416214C4E00AED747 /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EE316214C4E00AED747 /* EditableCell.m */; };
+		B0227EE616214C6900AED747 /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0227EE516214C6900AED747 /* EditableCell.xib */; };
+		B0227EE9162150F200AED747 /* DateInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EE8162150F100AED747 /* DateInputTableViewCell.m */; };
+		B0227EEB162170A600AED747 /* BillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0227EEA162170A600AED747 /* BillCell.xib */; };
+		B0227EEE1621799D00AED747 /* ChooseActivityMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EED1621799D00AED747 /* ChooseActivityMemberViewController.m */; };
+		B0227EF51621813200AED747 /* ChoosePayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EF41621813200AED747 /* ChoosePayerViewController.m */; };
+		B048B207161DBE1A00215471 /* DBA.m in Sources */ = {isa = PBXBuildFile; fileRef = B048B206161DBE1A00215471 /* DBA.m */; };
+		B048B20C161DCC4F00215471 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = B048B20B161DCC4F00215471 /* Utility.m */; };
+		B048B243161DD47A00215471 /* TripItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B048B242161DD47A00215471 /* TripItemCell.m */; };
+		B048B24C161DDFE900215471 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B048B24B161DDFE900215471 /* CoreData.framework */; };
+		B048B258161DF41400215471 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B048B257161DF41300215471 /* iPhone.storyboard */; };
+		B08E07C21621DBA300D8404F /* TextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B08E07C11621DBA300D8404F /* TextFieldDelegate.m */; };
+		B08E07CA1621E49100D8404F /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B08E07C91621E49100D8404F /* PhoneNumberFormatter.m */; };
+		B0A06FF91621A6F9000E8FE9 /* AddPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A06FF81621A6F9000E8FE9 /* AddPayView.xib */; };
+		B0A070001621B285000E8FE9 /* TripItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A06FFF1621B285000E8FE9 /* TripItemCell.xib */; };
+		B0A070031621B3B2000E8FE9 /* empty-trip.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A070011621B3B2000E8FE9 /* empty-trip.png */; };
+		B0A070041621B3B2000E8FE9 /* empty-trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A070021621B3B2000E8FE9 /* empty-trip@2x.png */; };
+		B0A070071621BF22000E8FE9 /* UserTripActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A070061621BF22000E8FE9 /* UserTripActivitiesViewController.m */; };
+		B0A0700A1621CBD4000E8FE9 /* MemberInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A070091621CBD4000E8FE9 /* MemberInfoViewController.m */; };
+		B0CB6711161EB0620013442D /* TripDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6710161EB0620013442D /* TripDetailTableViewController.m */; };
+		B0CB675A161EDAA70013442D /* BillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6759161EDAA70013442D /* BillCell.m */; };
+		B0CB675E161EDB540013442D /* MemberCostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB675D161EDB540013442D /* MemberCostCell.m */; };
+		B0CB6765161EDFF40013442D /* TripActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6764161EDFF40013442D /* TripActivitiesViewController.m */; };
+		B0CB6768161F01D80013442D /* AddMemberToTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6767161F01D80013442D /* AddMemberToTripViewController.m */; };
+		B0CB6772161F52E00013442D /* AddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6771161F52DF0013442D /* AddActivityViewController.m */; };
+		B0CB6775161F57FE0013442D /* CostInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6774161F57FE0013442D /* CostInputCell.m */; };
+		B0F3AE7A161FD287003E09D8 /* Activity+WithSectionKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F3AE79161FD287003E09D8 /* Activity+WithSectionKey.m */; };
+		B0F3AE8416200323003E09D8 /* TripDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F3AE8316200323003E09D8 /* TripDatabase.m */; };
+		B0F3AE9916200777003E09D8 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F3AE9816200777003E09D8 /* Trip.m */; };
+		B0F3AE9C16200778003E09D8 /* Pay.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F3AE9B16200778003E09D8 /* Pay.m */; };
+		B0F3AE9F16200778003E09D8 /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F3AE9E16200778003E09D8 /* Member.m */; };
+		B0F3AEA216200779003E09D8 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F3AEA116200778003E09D8 /* Activity.m */; };
+		B0FE1554161D844A005D1C68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FE1553161D844A005D1C68 /* UIKit.framework */; };
+		B0FE1556161D844A005D1C68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FE1555161D844A005D1C68 /* Foundation.framework */; };
+		B0FE1558161D844A005D1C68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FE1557161D844A005D1C68 /* CoreGraphics.framework */; };
+		B0FE155E161D844B005D1C68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0FE155C161D844B005D1C68 /* InfoPlist.strings */; };
+		B0FE1560161D844B005D1C68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE155F161D844B005D1C68 /* main.m */; };
+		B0FE1564161D844B005D1C68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1563161D844B005D1C68 /* AppDelegate.m */; };
+		B0FE1567161D844B005D1C68 /* AddPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1566161D844B005D1C68 /* AddPayViewController.m */; };
+		B0FE156A161D844B005D1C68 /* AddTripView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0FE1568161D844B005D1C68 /* AddTripView.xib */; };
+		B0FE1572161D84FF005D1C68 /* TripListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1571161D84FF005D1C68 /* TripListTableViewController.m */; };
+		B0FE1588161D927A005D1C68 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1587161D927A005D1C68 /* AddTripViewController.m */; };
+		B0FE158B161D9DBB005D1C68 /* GoTrip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1589161D9DBB005D1C68 /* GoTrip.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B0227ED41621229800AED747 /* Datetime+FormattedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Datetime+FormattedString.h"; sourceTree = "<group>"; };
+		B0227ED51621229800AED747 /* Datetime+FormattedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Datetime+FormattedString.m"; sourceTree = "<group>"; };
+		B0227ED71621291F00AED747 /* MemberCostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemberCostCell.xib; path = GoTrip/MemberCostCell.xib; sourceTree = "<group>"; };
+		B0227EDF162142D400AED747 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
+		B0227EE0162142D500AED747 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
+		B0227EE216214C4E00AED747 /* EditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditableCell.h; path = GoTrip/EditableCell.h; sourceTree = "<group>"; };
+		B0227EE316214C4E00AED747 /* EditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditableCell.m; path = GoTrip/EditableCell.m; sourceTree = "<group>"; };
+		B0227EE516214C6900AED747 /* EditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditableCell.xib; sourceTree = "<group>"; };
+		B0227EE7162150F100AED747 /* DateInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateInputTableViewCell.h; path = GoTrip/DateInputTableViewCell.h; sourceTree = "<group>"; };
+		B0227EE8162150F100AED747 /* DateInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateInputTableViewCell.m; path = GoTrip/DateInputTableViewCell.m; sourceTree = "<group>"; };
+		B0227EEA162170A600AED747 /* BillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillCell.xib; sourceTree = "<group>"; };
+		B0227EEC1621799D00AED747 /* ChooseActivityMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseActivityMemberViewController.h; sourceTree = "<group>"; };
+		B0227EED1621799D00AED747 /* ChooseActivityMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseActivityMemberViewController.m; sourceTree = "<group>"; };
+		B0227EF31621813100AED747 /* ChoosePayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePayerViewController.h; sourceTree = "<group>"; };
+		B0227EF41621813200AED747 /* ChoosePayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePayerViewController.m; sourceTree = "<group>"; };
+		B048B205161DBE1A00215471 /* DBA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBA.h; path = GoTrip/DBA.h; sourceTree = "<group>"; };
+		B048B206161DBE1A00215471 /* DBA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBA.m; path = GoTrip/DBA.m; sourceTree = "<group>"; };
+		B048B20A161DCC4F00215471 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		B048B20B161DCC4F00215471 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		B048B241161DD47A00215471 /* TripItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripItemCell.h; path = GoTrip/TripItemCell.h; sourceTree = "<group>"; };
+		B048B242161DD47A00215471 /* TripItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripItemCell.m; path = GoTrip/TripItemCell.m; sourceTree = "<group>"; };
+		B048B24B161DDFE900215471 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B048B257161DF41300215471 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = ../iPhone.storyboard; sourceTree = "<group>"; };
+		B08E07C01621DBA300D8404F /* TextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldDelegate.h; sourceTree = "<group>"; };
+		B08E07C11621DBA300D8404F /* TextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldDelegate.m; sourceTree = "<group>"; };
+		B08E07C81621E49100D8404F /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
+		B08E07C91621E49100D8404F /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
+		B0A06FF81621A6F9000E8FE9 /* AddPayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPayView.xib; sourceTree = "<group>"; };
+		B0A06FFF1621B285000E8FE9 /* TripItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripItemCell.xib; sourceTree = "<group>"; };
+		B0A070011621B3B2000E8FE9 /* empty-trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-trip.png"; sourceTree = "<group>"; };
+		B0A070021621B3B2000E8FE9 /* empty-trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-trip@2x.png"; sourceTree = "<group>"; };
+		B0A070051621BF22000E8FE9 /* UserTripActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTripActivitiesViewController.h; sourceTree = "<group>"; };
+		B0A070061621BF22000E8FE9 /* UserTripActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTripActivitiesViewController.m; sourceTree = "<group>"; };
+		B0A070081621CBD3000E8FE9 /* MemberInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberInfoViewController.h; sourceTree = "<group>"; };
+		B0A070091621CBD4000E8FE9 /* MemberInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberInfoViewController.m; sourceTree = "<group>"; };
+		B0CB670F161EB0620013442D /* TripDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDetailTableViewController.h; sourceTree = "<group>"; };
+		B0CB6710161EB0620013442D /* TripDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripDetailTableViewController.m; sourceTree = "<group>"; };
+		B0CB6758161EDAA70013442D /* BillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BillCell.h; path = GoTrip/BillCell.h; sourceTree = "<group>"; };
+		B0CB6759161EDAA70013442D /* BillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BillCell.m; path = GoTrip/BillCell.m; sourceTree = "<group>"; };
+		B0CB675C161EDB540013442D /* MemberCostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemberCostCell.h; path = GoTrip/MemberCostCell.h; sourceTree = "<group>"; };
+		B0CB675D161EDB540013442D /* MemberCostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemberCostCell.m; path = GoTrip/MemberCostCell.m; sourceTree = "<group>"; };
+		B0CB6763161EDFF40013442D /* TripActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripActivitiesViewController.h; sourceTree = "<group>"; };
+		B0CB6764161EDFF40013442D /* TripActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripActivitiesViewController.m; sourceTree = "<group>"; };
+		B0CB6766161F01D80013442D /* AddMemberToTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberToTripViewController.h; sourceTree = "<group>"; };
+		B0CB6767161F01D80013442D /* AddMemberToTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberToTripViewController.m; sourceTree = "<group>"; };
+		B0CB6770161F52DF0013442D /* AddActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddActivityViewController.h; sourceTree = "<group>"; };
+		B0CB6771161F52DF0013442D /* AddActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddActivityViewController.m; sourceTree = "<group>"; };
+		B0CB6773161F57FE0013442D /* CostInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CostInputCell.h; path = GoTrip/CostInputCell.h; sourceTree = "<group>"; };
+		B0CB6774161F57FE0013442D /* CostInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CostInputCell.m; path = GoTrip/CostInputCell.m; sourceTree = "<group>"; };
+		B0F3AE78161FD287003E09D8 /* Activity+WithSectionKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Activity+WithSectionKey.h"; path = "GoTrip/Activity+WithSectionKey.h"; sourceTree = "<group>"; };
+		B0F3AE79161FD287003E09D8 /* Activity+WithSectionKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Activity+WithSectionKey.m"; path = "GoTrip/Activity+WithSectionKey.m"; sourceTree = "<group>"; };
+		B0F3AE8216200323003E09D8 /* TripDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripDatabase.h; path = GoTrip/TripDatabase.h; sourceTree = "<group>"; };
+		B0F3AE8316200323003E09D8 /* TripDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripDatabase.m; path = GoTrip/TripDatabase.m; sourceTree = "<group>"; };
+		B0F3AE9716200777003E09D8 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = GoTrip/Trip.h; sourceTree = "<group>"; };
+		B0F3AE9816200777003E09D8 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = GoTrip/Trip.m; sourceTree = "<group>"; };
+		B0F3AE9A16200778003E09D8 /* Pay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pay.h; path = GoTrip/Pay.h; sourceTree = "<group>"; };
+		B0F3AE9B16200778003E09D8 /* Pay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pay.m; path = GoTrip/Pay.m; sourceTree = "<group>"; };
+		B0F3AE9D16200778003E09D8 /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Member.h; path = GoTrip/Member.h; sourceTree = "<group>"; };
+		B0F3AE9E16200778003E09D8 /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Member.m; path = GoTrip/Member.m; sourceTree = "<group>"; };
+		B0F3AEA016200778003E09D8 /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Activity.h; path = GoTrip/Activity.h; sourceTree = "<group>"; };
+		B0F3AEA116200778003E09D8 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Activity.m; path = GoTrip/Activity.m; sourceTree = "<group>"; };
+		B0FE154F161D844A005D1C68 /* GoTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0FE1553161D844A005D1C68 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B0FE1555161D844A005D1C68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B0FE1557161D844A005D1C68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B0FE155B161D844B005D1C68 /* GoTrip-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoTrip-Info.plist"; sourceTree = "<group>"; };
+		B0FE155D161D844B005D1C68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B0FE155F161D844B005D1C68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B0FE1561161D844B005D1C68 /* GoTrip-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoTrip-Prefix.pch"; sourceTree = "<group>"; };
+		B0FE1562161D844B005D1C68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B0FE1563161D844B005D1C68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B0FE1565161D844B005D1C68 /* AddPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPayViewController.h; sourceTree = "<group>"; };
+		B0FE1566161D844B005D1C68 /* AddPayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPayViewController.m; sourceTree = "<group>"; };
+		B0FE1569161D844B005D1C68 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AddTripView.xib; sourceTree = "<group>"; };
+		B0FE1570161D84FF005D1C68 /* TripListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripListTableViewController.h; sourceTree = "<group>"; };
+		B0FE1571161D84FF005D1C68 /* TripListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripListTableViewController.m; sourceTree = "<group>"; };
+		B0FE1586161D927A005D1C68 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
+		B0FE1587161D927A005D1C68 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
+		B0FE158A161D9DBB005D1C68 /* GoTrip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoTrip.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B0FE154C161D844A005D1C68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B048B24C161DDFE900215471 /* CoreData.framework in Frameworks */,
+				B0FE1554161D844A005D1C68 /* UIKit.framework in Frameworks */,
+				B0FE1556161D844A005D1C68 /* Foundation.framework in Frameworks */,
+				B0FE1558161D844A005D1C68 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B0227ED21621227C00AED747 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B08E07C01621DBA300D8404F /* TextFieldDelegate.h */,
+				B08E07C11621DBA300D8404F /* TextFieldDelegate.m */,
+				B08E07C81621E49100D8404F /* PhoneNumberFormatter.h */,
+				B08E07C91621E49100D8404F /* PhoneNumberFormatter.m */,
+				B0227ED41621229800AED747 /* Datetime+FormattedString.h */,
+				B0227ED51621229800AED747 /* Datetime+FormattedString.m */,
+				B048B20A161DCC4F00215471 /* Utility.h */,
+				B048B20B161DCC4F00215471 /* Utility.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		B048B209161DBE2D00215471 /* DBA */ = {
+			isa = PBXGroup;
+			children = (
+				B0FE1589161D9DBB005D1C68 /* GoTrip.xcdatamodeld */,
+				B0F3AE9716200777003E09D8 /* Trip.h */,
+				B0F3AE9816200777003E09D8 /* Trip.m */,
+				B0F3AE9D16200778003E09D8 /* Member.h */,
+				B0F3AE9E16200778003E09D8 /* Member.m */,
+				B0F3AEA016200778003E09D8 /* Activity.h */,
+				B0F3AEA116200778003E09D8 /* Activity.m */,
+				B0F3AE9A16200778003E09D8 /* Pay.h */,
+				B0F3AE9B16200778003E09D8 /* Pay.m */,
+				B048B205161DBE1A00215471 /* DBA.h */,
+				B048B206161DBE1A00215471 /* DBA.m */,
+				B0F3AE78161FD287003E09D8 /* Activity+WithSectionKey.h */,
+				B0F3AE79161FD287003E09D8 /* Activity+WithSectionKey.m */,
+				B0F3AE8216200323003E09D8 /* TripDatabase.h */,
+				B0F3AE8316200323003E09D8 /* TripDatabase.m */,
+			);
+			name = DBA;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		B048B240161DD44E00215471 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B0227EE7162150F100AED747 /* DateInputTableViewCell.h */,
+				B0227EE8162150F100AED747 /* DateInputTableViewCell.m */,
+				B0227ED71621291F00AED747 /* MemberCostCell.xib */,
+				B0CB6758161EDAA70013442D /* BillCell.h */,
+				B0CB6759161EDAA70013442D /* BillCell.m */,
+				B048B241161DD47A00215471 /* TripItemCell.h */,
+				B048B242161DD47A00215471 /* TripItemCell.m */,
+				B0CB675C161EDB540013442D /* MemberCostCell.h */,
+				B0CB675D161EDB540013442D /* MemberCostCell.m */,
+				B0CB6773161F57FE0013442D /* CostInputCell.h */,
+				B0CB6774161F57FE0013442D /* CostInputCell.m */,
+				B0227EE216214C4E00AED747 /* EditableCell.h */,
+				B0227EE316214C4E00AED747 /* EditableCell.m */,
+				B0227EE516214C6900AED747 /* EditableCell.xib */,
+				B0227EEA162170A600AED747 /* BillCell.xib */,
+				B0A06FFF1621B285000E8FE9 /* TripItemCell.xib */,
+			);
+			name = "Table Cells";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		B0CB675B161EDB000013442D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B0FE1565161D844B005D1C68 /* AddPayViewController.h */,
+				B0FE1566161D844B005D1C68 /* AddPayViewController.m */,
+				B0CB670F161EB0620013442D /* TripDetailTableViewController.h */,
+				B0CB6710161EB0620013442D /* TripDetailTableViewController.m */,
+				B0FE1586161D927A005D1C68 /* AddTripViewController.h */,
+				B0FE1587161D927A005D1C68 /* AddTripViewController.m */,
+				B0FE1570161D84FF005D1C68 /* TripListTableViewController.h */,
+				B0FE1571161D84FF005D1C68 /* TripListTableViewController.m */,
+				B0CB6763161EDFF40013442D /* TripActivitiesViewController.h */,
+				B0CB6764161EDFF40013442D /* TripActivitiesViewController.m */,
+				B0CB6766161F01D80013442D /* AddMemberToTripViewController.h */,
+				B0CB6767161F01D80013442D /* AddMemberToTripViewController.m */,
+				B0CB6770161F52DF0013442D /* AddActivityViewController.h */,
+				B0CB6771161F52DF0013442D /* AddActivityViewController.m */,
+				B0227EDF162142D400AED747 /* ActivityDetailViewController.h */,
+				B0227EE0162142D500AED747 /* ActivityDetailViewController.m */,
+				B0227EEC1621799D00AED747 /* ChooseActivityMemberViewController.h */,
+				B0227EED1621799D00AED747 /* ChooseActivityMemberViewController.m */,
+				B0227EF31621813100AED747 /* ChoosePayerViewController.h */,
+				B0227EF41621813200AED747 /* ChoosePayerViewController.m */,
+				B0A06FF81621A6F9000E8FE9 /* AddPayView.xib */,
+				B0FE1568161D844B005D1C68 /* AddTripView.xib */,
+				B0A070051621BF22000E8FE9 /* UserTripActivitiesViewController.h */,
+				B0A070061621BF22000E8FE9 /* UserTripActivitiesViewController.m */,
+				B0A070081621CBD3000E8FE9 /* MemberInfoViewController.h */,
+				B0A070091621CBD4000E8FE9 /* MemberInfoViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B0FE1544161D844A005D1C68 = {
+			isa = PBXGroup;
+			children = (
+				B0FE1559161D844A005D1C68 /* GoTrip */,
+				B0FE1552161D844A005D1C68 /* Frameworks */,
+				B0FE1550161D844A005D1C68 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B0FE1550161D844A005D1C68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0FE154F161D844A005D1C68 /* GoTrip.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0FE1552161D844A005D1C68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B048B24B161DDFE900215471 /* CoreData.framework */,
+				B0FE1553161D844A005D1C68 /* UIKit.framework */,
+				B0FE1555161D844A005D1C68 /* Foundation.framework */,
+				B0FE1557161D844A005D1C68 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0FE1559161D844A005D1C68 /* GoTrip */ = {
+			isa = PBXGroup;
+			children = (
+				B048B257161DF41300215471 /* iPhone.storyboard */,
+				B0227ED21621227C00AED747 /* Utilities */,
+				B0CB675B161EDB000013442D /* View Controllers */,
+				B048B240161DD44E00215471 /* Table Cells */,
+				B048B209161DBE2D00215471 /* DBA */,
+				B0FE1562161D844B005D1C68 /* AppDelegate.h */,
+				B0FE1563161D844B005D1C68 /* AppDelegate.m */,
+				B0FE155A161D844B005D1C68 /* Supporting Files */,
+			);
+			path = GoTrip;
+			sourceTree = "<group>";
+		};
+		B0FE155A161D844B005D1C68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0A070011621B3B2000E8FE9 /* empty-trip.png */,
+				B0A070021621B3B2000E8FE9 /* empty-trip@2x.png */,
+				B0FE155B161D844B005D1C68 /* GoTrip-Info.plist */,
+				B0FE155C161D844B005D1C68 /* InfoPlist.strings */,
+				B0FE155F161D844B005D1C68 /* main.m */,
+				B0FE1561161D844B005D1C68 /* GoTrip-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B0FE154E161D844A005D1C68 /* GoTrip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0FE156D161D844B005D1C68 /* Build configuration list for PBXNativeTarget "GoTrip" */;
+			buildPhases = (
+				B0FE154B161D844A005D1C68 /* Sources */,
+				B0FE154C161D844A005D1C68 /* Frameworks */,
+				B0FE154D161D844A005D1C68 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoTrip;
+			productName = GoTrip;
+			productReference = B0FE154F161D844A005D1C68 /* GoTrip.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B0FE1546161D844A005D1C68 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = beacon;
+			};
+			buildConfigurationList = B0FE1549161D844A005D1C68 /* Build configuration list for PBXProject "GoTrip" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B0FE1544161D844A005D1C68;
+			productRefGroup = B0FE1550161D844A005D1C68 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B0FE154E161D844A005D1C68 /* GoTrip */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B0FE154D161D844A005D1C68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0FE155E161D844B005D1C68 /* InfoPlist.strings in Resources */,
+				B0FE156A161D844B005D1C68 /* AddTripView.xib in Resources */,
+				B048B258161DF41400215471 /* iPhone.storyboard in Resources */,
+				B0227ED81621291F00AED747 /* MemberCostCell.xib in Resources */,
+				B0227EE616214C6900AED747 /* EditableCell.xib in Resources */,
+				B0227EEB162170A600AED747 /* BillCell.xib in Resources */,
+				B0A06FF91621A6F9000E8FE9 /* AddPayView.xib in Resources */,
+				B0A070001621B285000E8FE9 /* TripItemCell.xib in Resources */,
+				B0A070031621B3B2000E8FE9 /* empty-trip.png in Resources */,
+				B0A070041621B3B2000E8FE9 /* empty-trip@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B0FE154B161D844A005D1C68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0FE1560161D844B005D1C68 /* main.m in Sources */,
+				B0FE1564161D844B005D1C68 /* AppDelegate.m in Sources */,
+				B0FE1567161D844B005D1C68 /* AddPayViewController.m in Sources */,
+				B0FE1572161D84FF005D1C68 /* TripListTableViewController.m in Sources */,
+				B0FE1588161D927A005D1C68 /* AddTripViewController.m in Sources */,
+				B0FE158B161D9DBB005D1C68 /* GoTrip.xcdatamodeld in Sources */,
+				B048B207161DBE1A00215471 /* DBA.m in Sources */,
+				B048B20C161DCC4F00215471 /* Utility.m in Sources */,
+				B048B243161DD47A00215471 /* TripItemCell.m in Sources */,
+				B0CB6711161EB0620013442D /* TripDetailTableViewController.m in Sources */,
+				B0CB675A161EDAA70013442D /* BillCell.m in Sources */,
+				B0CB675E161EDB540013442D /* MemberCostCell.m in Sources */,
+				B0CB6765161EDFF40013442D /* TripActivitiesViewController.m in Sources */,
+				B0CB6768161F01D80013442D /* AddMemberToTripViewController.m in Sources */,
+				B0CB6772161F52E00013442D /* AddActivityViewController.m in Sources */,
+				B0CB6775161F57FE0013442D /* CostInputCell.m in Sources */,
+				B0F3AE7A161FD287003E09D8 /* Activity+WithSectionKey.m in Sources */,
+				B0F3AE8416200323003E09D8 /* TripDatabase.m in Sources */,
+				B0F3AE9916200777003E09D8 /* Trip.m in Sources */,
+				B0F3AE9C16200778003E09D8 /* Pay.m in Sources */,
+				B0F3AE9F16200778003E09D8 /* Member.m in Sources */,
+				B0F3AEA216200779003E09D8 /* Activity.m in Sources */,
+				B0227ED61621229800AED747 /* Datetime+FormattedString.m in Sources */,
+				B0227EE1162142D500AED747 /* ActivityDetailViewController.m in Sources */,
+				B0227EE416214C4E00AED747 /* EditableCell.m in Sources */,
+				B0227EE9162150F200AED747 /* DateInputTableViewCell.m in Sources */,
+				B0227EEE1621799D00AED747 /* ChooseActivityMemberViewController.m in Sources */,
+				B0227EF51621813200AED747 /* ChoosePayerViewController.m in Sources */,
+				B0A070071621BF22000E8FE9 /* UserTripActivitiesViewController.m in Sources */,
+				B0A0700A1621CBD4000E8FE9 /* MemberInfoViewController.m in Sources */,
+				B08E07C21621DBA300D8404F /* TextFieldDelegate.m in Sources */,
+				B08E07CA1621E49100D8404F /* PhoneNumberFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B0FE155C161D844B005D1C68 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0FE155D161D844B005D1C68 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B0FE1568161D844B005D1C68 /* AddTripView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0FE1569161D844B005D1C68 /* en */,
+			);
+			name = AddTripView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B0FE156B161D844B005D1C68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B0FE156C161D844B005D1C68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B0FE156E161D844B005D1C68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoTrip/GoTrip-Prefix.pch";
+				INFOPLIST_FILE = "GoTrip/GoTrip-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B0FE156F161D844B005D1C68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoTrip/GoTrip-Prefix.pch";
+				INFOPLIST_FILE = "GoTrip/GoTrip-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B0FE1549161D844A005D1C68 /* Build configuration list for PBXProject "GoTrip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0FE156B161D844B005D1C68 /* Debug */,
+				B0FE156C161D844B005D1C68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0FE156D161D844B005D1C68 /* Build configuration list for PBXNativeTarget "GoTrip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0FE156E161D844B005D1C68 /* Debug */,
+				B0FE156F161D844B005D1C68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B0FE1589161D9DBB005D1C68 /* GoTrip.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B0FE158A161D9DBB005D1C68 /* GoTrip.xcdatamodel */,
+			);
+			currentVersion = B0FE158A161D9DBB005D1C68 /* GoTrip.xcdatamodel */;
+			name = GoTrip.xcdatamodeld;
+			path = GoTrip/GoTrip.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B0FE1546161D844A005D1C68 /* Project object */;
+}
