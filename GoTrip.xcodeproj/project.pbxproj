@@ -11,20 +11,20 @@
 		B0227ED81621291F00AED747 /* MemberCostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0227ED71621291F00AED747 /* MemberCostCell.xib */; };
 		B0227EE1162142D500AED747 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EE0162142D500AED747 /* ActivityDetailViewController.m */; };
 		B0227EE416214C4E00AED747 /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EE316214C4E00AED747 /* EditableCell.m */; };
-		B0227EE616214C6900AED747 /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0227EE516214C6900AED747 /* EditableCell.xib */; };
 		B0227EE9162150F200AED747 /* DateInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EE8162150F100AED747 /* DateInputTableViewCell.m */; };
-		B0227EEB162170A600AED747 /* BillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0227EEA162170A600AED747 /* BillCell.xib */; };
 		B0227EEE1621799D00AED747 /* ChooseActivityMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EED1621799D00AED747 /* ChooseActivityMemberViewController.m */; };
 		B0227EF51621813200AED747 /* ChoosePayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0227EF41621813200AED747 /* ChoosePayerViewController.m */; };
 		B048B207161DBE1A00215471 /* DBA.m in Sources */ = {isa = PBXBuildFile; fileRef = B048B206161DBE1A00215471 /* DBA.m */; };
 		B048B20C161DCC4F00215471 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = B048B20B161DCC4F00215471 /* Utility.m */; };
 		B048B243161DD47A00215471 /* TripItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B048B242161DD47A00215471 /* TripItemCell.m */; };
 		B048B24C161DDFE900215471 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B048B24B161DDFE900215471 /* CoreData.framework */; };
-		B048B258161DF41400215471 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B048B257161DF41300215471 /* iPhone.storyboard */; };
+		B053D8C01623134600332960 /* BillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B053D8BD1623134600332960 /* BillCell.xib */; };
+		B053D8C11623134600332960 /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B053D8BE1623134600332960 /* EditableCell.xib */; };
+		B053D8C21623134600332960 /* TripItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B053D8BF1623134600332960 /* TripItemCell.xib */; };
+		B053D8C41623136200332960 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B053D8C31623136200332960 /* iPhone.storyboard */; };
 		B08E07C21621DBA300D8404F /* TextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B08E07C11621DBA300D8404F /* TextFieldDelegate.m */; };
 		B08E07CA1621E49100D8404F /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B08E07C91621E49100D8404F /* PhoneNumberFormatter.m */; };
 		B0A06FF91621A6F9000E8FE9 /* AddPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A06FF81621A6F9000E8FE9 /* AddPayView.xib */; };
-		B0A070001621B285000E8FE9 /* TripItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A06FFF1621B285000E8FE9 /* TripItemCell.xib */; };
 		B0A070031621B3B2000E8FE9 /* empty-trip.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A070011621B3B2000E8FE9 /* empty-trip.png */; };
 		B0A070041621B3B2000E8FE9 /* empty-trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A070021621B3B2000E8FE9 /* empty-trip@2x.png */; };
 		B0A070071621BF22000E8FE9 /* UserTripActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A070061621BF22000E8FE9 /* UserTripActivitiesViewController.m */; };
@@ -63,10 +63,8 @@
 		B0227EE0162142D500AED747 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		B0227EE216214C4E00AED747 /* EditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditableCell.h; path = GoTrip/EditableCell.h; sourceTree = "<group>"; };
 		B0227EE316214C4E00AED747 /* EditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditableCell.m; path = GoTrip/EditableCell.m; sourceTree = "<group>"; };
-		B0227EE516214C6900AED747 /* EditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditableCell.xib; sourceTree = "<group>"; };
 		B0227EE7162150F100AED747 /* DateInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateInputTableViewCell.h; path = GoTrip/DateInputTableViewCell.h; sourceTree = "<group>"; };
 		B0227EE8162150F100AED747 /* DateInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateInputTableViewCell.m; path = GoTrip/DateInputTableViewCell.m; sourceTree = "<group>"; };
-		B0227EEA162170A600AED747 /* BillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillCell.xib; sourceTree = "<group>"; };
 		B0227EEC1621799D00AED747 /* ChooseActivityMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseActivityMemberViewController.h; sourceTree = "<group>"; };
 		B0227EED1621799D00AED747 /* ChooseActivityMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseActivityMemberViewController.m; sourceTree = "<group>"; };
 		B0227EF31621813100AED747 /* ChoosePayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePayerViewController.h; sourceTree = "<group>"; };
@@ -78,13 +76,15 @@
 		B048B241161DD47A00215471 /* TripItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripItemCell.h; path = GoTrip/TripItemCell.h; sourceTree = "<group>"; };
 		B048B242161DD47A00215471 /* TripItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripItemCell.m; path = GoTrip/TripItemCell.m; sourceTree = "<group>"; };
 		B048B24B161DDFE900215471 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		B048B257161DF41300215471 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = ../iPhone.storyboard; sourceTree = "<group>"; };
+		B053D8BD1623134600332960 /* BillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BillCell.xib; path = GoTrip/BillCell.xib; sourceTree = "<group>"; };
+		B053D8BE1623134600332960 /* EditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditableCell.xib; path = GoTrip/EditableCell.xib; sourceTree = "<group>"; };
+		B053D8BF1623134600332960 /* TripItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TripItemCell.xib; path = GoTrip/TripItemCell.xib; sourceTree = "<group>"; };
+		B053D8C31623136200332960 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		B08E07C01621DBA300D8404F /* TextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldDelegate.h; sourceTree = "<group>"; };
 		B08E07C11621DBA300D8404F /* TextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldDelegate.m; sourceTree = "<group>"; };
 		B08E07C81621E49100D8404F /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
 		B08E07C91621E49100D8404F /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
 		B0A06FF81621A6F9000E8FE9 /* AddPayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPayView.xib; sourceTree = "<group>"; };
-		B0A06FFF1621B285000E8FE9 /* TripItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripItemCell.xib; sourceTree = "<group>"; };
 		B0A070011621B3B2000E8FE9 /* empty-trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-trip.png"; sourceTree = "<group>"; };
 		B0A070021621B3B2000E8FE9 /* empty-trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-trip@2x.png"; sourceTree = "<group>"; };
 		B0A070051621BF22000E8FE9 /* UserTripActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTripActivitiesViewController.h; sourceTree = "<group>"; };
@@ -193,6 +193,9 @@
 		B048B240161DD44E00215471 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B053D8BD1623134600332960 /* BillCell.xib */,
+				B053D8BE1623134600332960 /* EditableCell.xib */,
+				B053D8BF1623134600332960 /* TripItemCell.xib */,
 				B0227EE7162150F100AED747 /* DateInputTableViewCell.h */,
 				B0227EE8162150F100AED747 /* DateInputTableViewCell.m */,
 				B0227ED71621291F00AED747 /* MemberCostCell.xib */,
@@ -206,9 +209,6 @@
 				B0CB6774161F57FE0013442D /* CostInputCell.m */,
 				B0227EE216214C4E00AED747 /* EditableCell.h */,
 				B0227EE316214C4E00AED747 /* EditableCell.m */,
-				B0227EE516214C6900AED747 /* EditableCell.xib */,
-				B0227EEA162170A600AED747 /* BillCell.xib */,
-				B0A06FFF1621B285000E8FE9 /* TripItemCell.xib */,
 			);
 			name = "Table Cells";
 			path = ..;
@@ -278,7 +278,7 @@
 		B0FE1559161D844A005D1C68 /* GoTrip */ = {
 			isa = PBXGroup;
 			children = (
-				B048B257161DF41300215471 /* iPhone.storyboard */,
+				B053D8C31623136200332960 /* iPhone.storyboard */,
 				B0227ED21621227C00AED747 /* Utilities */,
 				B0CB675B161EDB000013442D /* View Controllers */,
 				B048B240161DD44E00215471 /* Table Cells */,
@@ -356,14 +356,14 @@
 			files = (
 				B0FE155E161D844B005D1C68 /* InfoPlist.strings in Resources */,
 				B0FE156A161D844B005D1C68 /* AddTripView.xib in Resources */,
-				B048B258161DF41400215471 /* iPhone.storyboard in Resources */,
 				B0227ED81621291F00AED747 /* MemberCostCell.xib in Resources */,
-				B0227EE616214C6900AED747 /* EditableCell.xib in Resources */,
-				B0227EEB162170A600AED747 /* BillCell.xib in Resources */,
 				B0A06FF91621A6F9000E8FE9 /* AddPayView.xib in Resources */,
-				B0A070001621B285000E8FE9 /* TripItemCell.xib in Resources */,
 				B0A070031621B3B2000E8FE9 /* empty-trip.png in Resources */,
 				B0A070041621B3B2000E8FE9 /* empty-trip@2x.png in Resources */,
+				B053D8C01623134600332960 /* BillCell.xib in Resources */,
+				B053D8C11623134600332960 /* EditableCell.xib in Resources */,
+				B053D8C21623134600332960 /* TripItemCell.xib in Resources */,
+				B053D8C41623136200332960 /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
