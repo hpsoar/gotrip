@@ -18,9 +18,13 @@
 
 + (DBA *)dba;
 
-+ (NSNumber *)costRemainForActivity:(Activity *)activity;
+//+ (NSFetchedResultsController *)fetchedTripsController;
 
 + (NSNumber *)computeCostForTrip:(Trip *)trip;
+
++ (Trip *)addTripWithName:(NSString *)name;
+
++ (NSNumber *)costRemainForActivity:(Activity *)activity;
 
 + (NSNumber *)computeCostForMember:(Member *)member forTrip:(Trip *)trip;
 

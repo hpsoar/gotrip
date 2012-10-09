@@ -41,12 +41,7 @@
 }
 
 - (void)save {
-    Trip *trip = [[TripDatabase dba] insertNewObjectForEntityForName:@"Trip"];
-    trip.name = self.nameTextField.text;
-    trip.startDate = [NSDate dateWithTimeIntervalSinceNow:0];
-    
-    [[TripDatabase dba] save];
-    
+    Trip *trip = [TripDatabase addTripWithName:self.nameTextField.text];
     [self.delegate addTripViewController:self didAddTrip:trip];
 }
 

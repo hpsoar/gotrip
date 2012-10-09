@@ -92,9 +92,7 @@
     EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        //cell = [[CostInputCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil] lastObject];
-        //cell.accessoryType = UITableViewCellAccessoryNone;
     }
     if (indexPath.row == 0) {
         cell.titleLabel.text = @"标题";
@@ -102,7 +100,6 @@
     }
     else {
         cell.titleLabel.text = @"花费";
-        //cell.valueTextField.placeholder = @"￥123.00";
         cell.valueTextField.text = @"￥0";
         cell.valueTextField.delegate = [TextFieldDelgates moneyTextFieldDelegate];
     }

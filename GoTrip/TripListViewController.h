@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TripListTableViewController : UITableViewController
+@interface TripListViewController : UITableViewController
 @end

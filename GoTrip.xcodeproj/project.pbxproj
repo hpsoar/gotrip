@@ -50,7 +50,7 @@
 		B0FE1564161D844B005D1C68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1563161D844B005D1C68 /* AppDelegate.m */; };
 		B0FE1567161D844B005D1C68 /* AddPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1566161D844B005D1C68 /* AddPayViewController.m */; };
 		B0FE156A161D844B005D1C68 /* AddTripView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0FE1568161D844B005D1C68 /* AddTripView.xib */; };
-		B0FE1572161D84FF005D1C68 /* TripListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1571161D84FF005D1C68 /* TripListTableViewController.m */; };
+		B0FE1572161D84FF005D1C68 /* TripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1571161D84FF005D1C68 /* TripListViewController.m */; };
 		B0FE1588161D927A005D1C68 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1587161D927A005D1C68 /* AddTripViewController.m */; };
 		B0FE158B161D9DBB005D1C68 /* GoTrip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0FE1589161D9DBB005D1C68 /* GoTrip.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -130,8 +130,8 @@
 		B0FE1565161D844B005D1C68 /* AddPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPayViewController.h; sourceTree = "<group>"; };
 		B0FE1566161D844B005D1C68 /* AddPayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPayViewController.m; sourceTree = "<group>"; };
 		B0FE1569161D844B005D1C68 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AddTripView.xib; sourceTree = "<group>"; };
-		B0FE1570161D84FF005D1C68 /* TripListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripListTableViewController.h; sourceTree = "<group>"; };
-		B0FE1571161D84FF005D1C68 /* TripListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripListTableViewController.m; sourceTree = "<group>"; };
+		B0FE1570161D84FF005D1C68 /* TripListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripListViewController.h; sourceTree = "<group>"; };
+		B0FE1571161D84FF005D1C68 /* TripListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripListViewController.m; sourceTree = "<group>"; };
 		B0FE1586161D927A005D1C68 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
 		B0FE1587161D927A005D1C68 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
 		B0FE158A161D9DBB005D1C68 /* GoTrip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoTrip.xcdatamodel; sourceTree = "<group>"; };
@@ -223,8 +223,8 @@
 				B0CB6710161EB0620013442D /* TripDetailTableViewController.m */,
 				B0FE1586161D927A005D1C68 /* AddTripViewController.h */,
 				B0FE1587161D927A005D1C68 /* AddTripViewController.m */,
-				B0FE1570161D84FF005D1C68 /* TripListTableViewController.h */,
-				B0FE1571161D84FF005D1C68 /* TripListTableViewController.m */,
+				B0FE1570161D84FF005D1C68 /* TripListViewController.h */,
+				B0FE1571161D84FF005D1C68 /* TripListViewController.m */,
 				B0CB6763161EDFF40013442D /* TripActivitiesViewController.h */,
 				B0CB6764161EDFF40013442D /* TripActivitiesViewController.m */,
 				B0CB6766161F01D80013442D /* AddMemberToTripViewController.h */,
@@ -377,7 +377,7 @@
 				B0FE1560161D844B005D1C68 /* main.m in Sources */,
 				B0FE1564161D844B005D1C68 /* AppDelegate.m in Sources */,
 				B0FE1567161D844B005D1C68 /* AddPayViewController.m in Sources */,
-				B0FE1572161D84FF005D1C68 /* TripListTableViewController.m in Sources */,
+				B0FE1572161D84FF005D1C68 /* TripListViewController.m in Sources */,
 				B0FE1588161D927A005D1C68 /* AddTripViewController.m in Sources */,
 				B0FE158B161D9DBB005D1C68 /* GoTrip.xcdatamodeld in Sources */,
 				B048B207161DBE1A00215471 /* DBA.m in Sources */,

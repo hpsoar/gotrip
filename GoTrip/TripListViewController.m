@@ -7,23 +7,24 @@
 //
 
 #import "TripDetailTableViewController.h"
-#import "TripListTableViewController.h"
+#import "TripListViewController.h"
 #import "AddTripViewController.h"
 #import "TripDatabase.h"
 #import "Utility.h"
 #import "TripItemCell.h"
 
-@interface TripListTableViewController () <AddTripDelegate, NSFetchedResultsControllerDelegate>
+@interface TripListViewController () <AddTripDelegate, NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, weak) Trip *selectedTrip;
 @property (weak, nonatomic) IBOutlet UIImageView *emptyTripListImageView;
 @end
 
-@implementation TripListTableViewController
+@implementation TripListViewController
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize selectedTrip = _selectedTrip;
 @synthesize emptyTripListImageView = _emptyTripListImageView;
 
+// TODO: all dba related code should be extracted to TripDatabase, or its extensions
 - (NSFetchedResultsController *)fetchedResultsController {
     if (!_fetchedResultsController) {
         _fetchedResultsController = [[TripDatabase dba]fetchedResultsControllerForEntityName:@"Trip" sortBy:@"name" sectionNameKeyPath:nil cacheName:@"Root"];

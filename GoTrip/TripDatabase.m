@@ -19,20 +19,29 @@ static DBA *g_tripDatabase;
     return g_tripDatabase;
 }
 
-+ (NSNumber *)costRemainForActivity:(Activity *)activity {
-    __block float paid = 0;
-    [activity.pays enumerateObjectsUsingBlock:^(Pay *pay, BOOL *stop) {
-        paid += pay.amount.floatValue;
-    }];
-    return [NSNumber numberWithFloat:(activity.cost.floatValue - paid)];
-}
-
 + (NSNumber *)computeCostForTrip:(Trip *)trip {
     __block float cost = 0;
     [trip.activities enumerateObjectsUsingBlock:^(Activity* activity, BOOL *stop) {
         cost += activity.cost.floatValue;
     }];
     return [NSNumber numberWithFloat:cost];
+}
+
++ (Trip *)addTripWithName:(NSString *)name {
+    Trip *trip = [[TripDatabase dba] insertNewObjectForEntityForName:@"Trip"];
+    trip.name = name;
+    trip.startDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    
+    [[TripDatabase dba] save];
+    return trip;
+}
+
++ (NSNumber *)costRemainForActivity:(Activity *)activity {
+    __block float paid = 0;
+    [activity.pays enumerateObjectsUsingBlock:^(Pay *pay, BOOL *stop) {
+        paid += pay.amount.floatValue;
+    }];
+    return [NSNumber numberWithFloat:(activity.cost.floatValue - paid)];
 }
 
 + (NSNumber *)computeCostForMember:(Member *)member forTrip:(Trip *)trip {

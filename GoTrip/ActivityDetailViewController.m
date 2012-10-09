@@ -97,6 +97,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForBasicInfoSectionAtRow:(NSInteger)row {
     if (row == 2) {
+        // TODO: use EditableCell with customized delegate
         static NSString *CellIdentifier = @"DateInputTableViewCell";
         DateInputTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (!cell) {
