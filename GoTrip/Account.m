@@ -1,24 +1,24 @@
 //
-//  Member.m
+//  Account.m
 //  GoTrip
 //
 //  Created by Aldrich Huang on 10/10/2012.
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "Member.h"
+#import "Account.h"
 #import "SubAccount.h"
 #import "Trip.h"
 
 
-@implementation Member
+@implementation Account
 
-@dynamic email;
-@dynamic mobile;
-@dynamic name;
-@dynamic qq;
+@dynamic cost;
+@dynamic date;
+@dynamic location;
+@dynamic title;
 @dynamic consumptions;
 @dynamic expenditures;
-@dynamic trips;
+@dynamic trip;
 
 @end

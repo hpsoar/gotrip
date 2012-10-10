@@ -10,15 +10,37 @@
 #import "TripDatabase.h"
 #import "Utility.h"
 
-@interface AddMemberToTripViewController () <NSFetchedResultsControllerDelegate>
+@interface AddMemberToTripViewController () <NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (nonatomic, strong) NSFetchedResultsController *fetchtedMembersController;
+@property (nonatomic, strong) Member *selectedMember;
+
+@property (nonatomic, strong) NSArray *filteredMembers;
+@property (nonatomic, strong) NSArray *allMembers;
+
 @end
 
 @implementation AddMemberToTripViewController
 @synthesize nameTextField = _nameTextField;
 @synthesize trip = _trip;
 @synthesize fetchtedMembersController = _fetchtedMembersController;
+@synthesize selectedMember = _selectedMember;
+@synthesize filteredMembers = _filteredMembers;
+@synthesize allMembers = _allMembers;
+
+- (NSArray *)allMembers {
+    if (_allMembers == nil) {
+        _allMembers = [TripDatabase allMembers];
+    }
+    return _allMembers;
+}
+
+- (NSArray *)filteredMembers {
+    if (!_filteredMembers) {
+        _filteredMembers = self.allMembers;
+    }
+    return _filteredMembers;
+}
 
 - (NSFetchedResultsController *)fetchtedMembersController {
     if (!_fetchtedMembersController) {
@@ -36,23 +58,25 @@
     }
     return self;
 }
-- (IBAction)addMember:(id)sender {
-    if (![self.nameTextField.text isEqualToString:@""]) {
-        Member *member = [[TripDatabase dba] insertNewObjectForEntityForName:@"Member"];
-        
-        member.name = self.nameTextField.text;
-        
-        [self.trip addMembersObject:member];
-        
-        [[TripDatabase dba] save];
 
-        self.nameTextField.text = @"";
+- (IBAction)addMember:(UIBarButtonItem *)sender {
+    if ([self.nameTextField.text isEqualToString:@""]) return;
+    
+    if (!self.selectedMember) { // no such member in system
+        self.selectedMember = [TripDatabase addMemberWithName:self.nameTextField.text];
     }
-    [self.nameTextField resignFirstResponder];
+    
+    [TripDatabase addMember:self.selectedMember toTrip:self.trip];
+    
+    [self back];
 }
 
-- (IBAction)doneWithChoosing:(id)sender {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+- (void)back {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)cancel:(UIBarButtonItem *)sender {
+    [self back];
 }
 
 - (void)viewDidLoad
@@ -60,7 +84,9 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO; 
+    // self.clearsSelectionOnViewWillAppear = NO;
+    self.nameTextField.delegate = self;
+    [self.nameTextField becomeFirstResponder];
 }
 
 - (void)viewDidUnload
@@ -79,12 +105,12 @@
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.fetchtedMembersController.sections.count;
+    return self.filteredMembers.count > 0 ? 1 : 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.fetchtedMembersController.sections objectAtIndex:section] numberOfObjects];
+    return self.filteredMembers.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -99,7 +125,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    Member *member = [self.fetchtedMembersController objectAtIndexPath:indexPath];
+    Member *member = [self.filteredMembers objectAtIndex:indexPath.row];
+    
     cell.textLabel.text =member.name;
     if ([self.trip.members containsObject:member]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -151,32 +178,57 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Member *member = [self.fetchtedMembersController objectAtIndexPath:indexPath];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([self.trip.members containsObject:member]) {
-        // TODO: the member may have pays, check it and ask user for deletion confirmation
-        [self.trip removeMembersObject:member];
-        [[TripDatabase dba] save];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    else {
-        [self.trip addMembersObject:member];
-        [[TripDatabase dba] save];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
+    self.selectedMember = [self.fetchtedMembersController objectAtIndexPath:indexPath];
+    self.nameTextField.text = self.selectedMember.name;
+    
+
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    if ([self.trip.members containsObject:member]) {
+//        // TODO: the member may have pays, check it and ask user for deletion confirmation
+//        [self.trip removeMembersObject:member];
+//        [[TripDatabase dba] save];
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//    }
+//    else {
+//        [self.trip addMembersObject:member];
+//        [[TripDatabase dba] save];
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//    }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:YES];
-            break;
-            
-        default:
-            break;
-    }
+//- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+//    switch (type) {
+//        case NSFetchedResultsChangeInsert:
+//            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:YES];
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *keyword = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name beginswith[cd] %@", keyword];
+    self.filteredMembers = [self.allMembers filteredArrayUsingPredicate:predicate];
+    
+    if (self.filteredMembers.count == 0) self.filteredMembers = self.allMembers;
+    [self.tableView reloadData];
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    self.filteredMembers = self.allMembers;
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self addMember:nil];
+    return YES;
 }
 
 @end

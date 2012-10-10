@@ -14,7 +14,7 @@
 @end
 
 @implementation ChooseActivityMemberViewController
-@synthesize activity = _activity;
+@synthesize account = _account;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -57,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.activity.trip.members.count;
+    return self.account.trip.members.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,12 +68,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    Member *member = [self.activity.trip.members.allObjects objectAtIndex:indexPath.row];
+    Member *member = [self.account.trip.members.allObjects objectAtIndex:indexPath.row];
     cell.textLabel.text = member.name;
     
-    if ([self.activity.members containsObject:member]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
+//    if ([self.account.members containsObject:member]) {
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//    }
 
     return cell;
 }
@@ -121,19 +121,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Member *member = [self.activity.trip.members.allObjects objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([self.activity.members containsObject:member]) {
-        [self.activity removeMembersObject:member];
-        
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    else {
-        [self.activity addMembersObject:member];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    [[TripDatabase dba] save];
+//    Member *member = [self.account.trip.members.allObjects objectAtIndex:indexPath.row];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    if ([self.account.members containsObject:member]) {
+//        [self.account removeMembersObject:member];
+//        
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//    }
+//    else {
+//        [self.account addMembersObject:member];
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//    }
+//    [[TripDatabase dba] save];
 }
 
 @end

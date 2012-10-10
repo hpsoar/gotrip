@@ -11,8 +11,8 @@
 #import "DBA.h"
 #import "Trip.h"
 #import "Member.h"
-#import "Activity.h"
-#import "Pay.h"
+#import "Account.h"
+#import "SubAccount.h"
 
 @interface TripDatabase : NSObject
 
@@ -20,19 +20,31 @@
 
 //+ (NSFetchedResultsController *)fetchedTripsController;
 
-+ (NSNumber *)computeCostForTrip:(Trip *)trip;
++ (NSNumber *)costForTrip:(Trip *)trip;
 
 + (Trip *)addTripWithName:(NSString *)name;
 
-+ (NSNumber *)costRemainForActivity:(Activity *)activity;
+//+ (NSNumber *)costRemainForActivity:(Activity *)activity;
 
-+ (NSNumber *)computeCostForMember:(Member *)member forTrip:(Trip *)trip;
++ (NSArray *)allMembers;
 
-+ (NSNumber *)computePayForMember:(Member *)member forTrip:(Trip *)trip;
++ (Member *)addMemberWithName:(NSString *)name;
 
-+ (Pay*)payForActivity:(Activity *)activity byMember:(Member *)member;
++ (Member *)MemberInTrip:(Trip*)trip withName:(NSString *)memberName;
 
-+ (void)addPay:(NSNumber *)amout byMember:(Member *)member forActivity:(Activity *)activity;
++ (Member *)addMemberWithName:(NSString *)memberName toTrip:(Trip *)trip;
 
-+ (void)removePay:(Pay *)pay;
++ (void)addMember:(Member*)member toTrip:(Trip*)trip;
+
++ (NSNumber *)costForMember:(Member *)member inTrip:(Trip *)trip;
+
++ (NSNumber *)payByMember:(Member *)member inTrip:(Trip *)trip;
+
++ (Account *)addAccountWithTitle:(NSString *)title withCost:(float) cost toTrip:(Trip *)trip;
+
+//+ (Pay*)payForActivity:(Activity *)activity byMember:(Member *)member;
+//
+//+ (void)addPay:(NSNumber *)amout byMember:(Member *)member forActivity:(Activity *)activity;
+//
+//+ (void)removePay:(Pay *)pay;
 @end

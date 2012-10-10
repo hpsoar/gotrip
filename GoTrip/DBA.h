@@ -23,6 +23,8 @@
 
 - (id)insertNewObjectForEntityForName:(NSString *)databaseName;
 
+- (NSArray *)executeFetchRequest:(NSFetchRequest *)fetchRequest;
+
 - (void)deleteObject:(NSManagedObject *)object;
 - (void)save;
 

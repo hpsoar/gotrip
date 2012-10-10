@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class Activity;
+@class Account;
 
 @interface ChooseActivityMemberViewController : UITableViewController
-@property (nonatomic, strong) Activity *activity;
+@property (nonatomic, strong) Account *account;
 @end

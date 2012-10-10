@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "Activity.h"
+#import "Account.h"
 
-@interface Activity (WithSectionKey)
+@interface Account (WithSectionKey)
 @property (nonatomic, strong, readonly) NSDate *sectionKey;
 @end

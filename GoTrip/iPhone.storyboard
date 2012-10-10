@@ -42,26 +42,11 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="同伴名字" minimumFontSize="17" clearButtonMode="whileEditing" id="xnX-X4-qfF">
-                                    <rect key="frame" x="9" y="30" width="220" height="31"/>
+                                    <rect key="frame" x="11" y="30" width="298" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ddf-17-Siu">
-                                    <rect key="frame" x="237" y="27" width="72" height="37"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="添加">
-                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="addMember:" destination="7Mk-Xg-GOu" eventType="touchUpInside" id="PHQ-3c-H3z"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </view>
@@ -82,9 +67,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="添加旅行同伴" id="ZJv-LB-ZQW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DzJ-vh-5mQ">
+                            <connections>
+                                <action selector="cancel:" destination="7Mk-Xg-GOu" id="z8u-4K-y99"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="FOB-uL-3aV">
                             <connections>
-                                <action selector="doneWithChoosing:" destination="7Mk-Xg-GOu" id="jet-ym-RTZ"/>
+                                <action selector="addMember:" destination="7Mk-Xg-GOu" id="PRv-fr-NyG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -94,13 +84,13 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-688" y="880"/>
+            <point key="canvasLocation" x="-1138" y="696"/>
         </scene>
-        <!--Trip Detail Table View Controller - 旅游详情-->
+        <!--Trip Detail View Controller - 旅游详情-->
         <scene sceneID="gtb-wl-bZq">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBx-QJ-CZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="dXR-Vk-sUl" customClass="TripDetailTableViewController" sceneMemberID="viewController">
+                <tableViewController id="dXR-Vk-sUl" customClass="TripDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="qwD-ND-jeC">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,79 +102,33 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Members" id="Fm2-WN-gnF"/>
-                    <navigationItem key="navigationItem" title="旅游详情" id="kVa-4D-1TS"/>
+                    <navigationItem key="navigationItem" title="旅游详情" id="kVa-4D-1TS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HTY-wM-URx">
+                            <connections>
+                                <action selector="addAccount:" destination="dXR-Vk-sUl" id="L1o-VT-c1V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="BRw-uu-KxJ" kind="push" identifier="Show Trip Activities" id="CaZ-1p-K3k"/>
+                        <segue destination="BRw-uu-KxJ" kind="push" identifier="Show Trip Accounts" id="CaZ-1p-K3k"/>
                         <segue destination="cEE-Gf-XgI" kind="modal" identifier="Add Trip Member" id="V6Y-XT-s6Y"/>
                         <segue destination="uVh-8u-Ycz" kind="push" identifier="Show Trip Activities For User" id="AQq-W3-PfY"/>
+                        <segue destination="Mqj-pc-JEp" kind="modal" identifier="Add Trip Account" id="pxv-J3-EgJ"/>
+                        <segue destination="Iyo-vM-XqN" kind="push" identifier="Edit Trip Account" id="8Tl-nM-SF0"/>
                     </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-1907" y="-297"/>
         </scene>
-        <!--Add Activity View Controller-->
+        <!--Add Account View Controller-->
         <scene sceneID="tUJ-GJ-3KW">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Z8-T5-7cH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="gOK-Mm-aC7" customClass="AddActivityViewController" sceneMemberID="viewController">
+                <tableViewController id="gOK-Mm-aC7" customClass="AddAccountViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q4y-sl-zVo">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditableCell" id="zLm-6e-IVy" customClass="CostInputCell">
-                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mq7-wB-zny">
-                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Eat Food" textAlignment="right" minimumFontSize="17" id="krp-9N-sBw">
-                                            <rect key="frame" x="70" y="7" width="216" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="titleLabel" destination="mq7-wB-zny" id="aQj-Sp-eb4"/>
-                                    <outlet property="valueTextField" destination="krp-9N-sBw" id="bmC-XE-VaA"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditableCell" id="TdG-9G-zAj">
-                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="sVZ-M0-R2j">
-                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$123.00" textAlignment="right" minimumFontSize="17" id="HFW-Ze-gXo">
-                                            <rect key="frame" x="70" y="7" width="218" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="gOK-Mm-aC7" id="bUd-bJ-NBO"/>
@@ -199,7 +143,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="f9V-Ue-ciN">
                             <connections>
-                                <action selector="addActivity:" destination="gOK-Mm-aC7" id="GZH-dm-ySu"/>
+                                <action selector="addAccount:" destination="gOK-Mm-aC7" id="gaq-kn-9w5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -255,11 +199,11 @@
             </objects>
             <point key="canvasLocation" x="-675" y="-1131"/>
         </scene>
-        <!--Trip Activities View Controller - 花费清单-->
+        <!--Trip Accounts View Controller - 花费清单-->
         <scene sceneID="v0J-aO-wbO">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4fp-3B-Har" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="BRw-uu-KxJ" customClass="TripActivitiesViewController" sceneMemberID="viewController">
+                <tableViewController id="BRw-uu-KxJ" customClass="TripAccountsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jBl-Qp-Csf">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -279,18 +223,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Mqj-pc-JEp" kind="modal" identifier="Add Activity" id="2ai-Ka-DVG"/>
-                        <segue destination="Iyo-vM-XqN" kind="push" identifier="Show Activity Detail" id="qVF-df-GNu"/>
+                        <segue destination="Mqj-pc-JEp" kind="modal" identifier="Add Trip Account" id="2ai-Ka-DVG"/>
+                        <segue destination="Iyo-vM-XqN" kind="push" identifier="Show Trip Account Detail" id="qVF-df-GNu"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-1256" y="-297"/>
+            <point key="canvasLocation" x="-1092" y="-221"/>
         </scene>
-        <!--Activity Detail View Controller - 花费明细-->
+        <!--Account Detail View Controller - 花费明细-->
         <scene sceneID="9xh-iS-xPc">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bke-Eh-BE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Iyo-vM-XqN" customClass="ActivityDetailViewController" sceneMemberID="viewController">
+                <tableViewController id="Iyo-vM-XqN" customClass="AccountDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ic7-gY-UoQ">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,12 +276,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="花费明细" id="yWb-pK-EYg"/>
                     <connections>
-                        <segue destination="Qnh-Ab-sdZ" kind="push" identifier="Choose Activity Payer" id="uYO-7j-Mzw"/>
+                        <segue destination="Qnh-Ab-sdZ" kind="push" identifier="Choose Account Payer" id="uYO-7j-Mzw"/>
                         <segue destination="kmE-Aa-oGo" kind="push" identifier="Choose Activity Member" id="tWb-Bq-Pr9"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-633" y="-465"/>
+            <point key="canvasLocation" x="-617" y="-547"/>
         </scene>
         <!--Choose Activity Member View Controller - 选择参与者-->
         <scene sceneID="73a-KX-QzH">
@@ -411,7 +355,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-1256" y="464"/>
+            <point key="canvasLocation" x="-1550" y="696"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pCX-go-Jko">
@@ -429,7 +373,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-696" y="225"/>
+            <point key="canvasLocation" x="-633" y="527"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JlR-EL-QOx">
@@ -489,21 +433,21 @@
         <image name="empty-trip.png" width="320" height="416"/>
     </resources>
     <classes>
-        <class className="ActivityDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityDetailViewController.h"/>
+        <class className="AccountDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountDetailViewController.h"/>
         </class>
-        <class className="AddActivityViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddActivityViewController.h"/>
+        <class className="AddAccountViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddAccountViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addActivity:"/>
+                <relationship kind="action" name="addAccount:"/>
                 <relationship kind="action" name="cancel:"/>
             </relationships>
         </class>
         <class className="AddMemberToTripViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddMemberToTripViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addMember:"/>
-                <relationship kind="action" name="doneWithChoosing:"/>
+                <relationship kind="action" name="addMember:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="cancel:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -512,19 +456,6 @@
             <relationships>
                 <relationship kind="outlet" name="amountTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ChooseActivityMemberViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooseActivityMemberViewController.h"/>
-        </class>
-        <class className="ChoosePayerViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChoosePayerViewController.h"/>
-        </class>
-        <class className="CostInputCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CostInputCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="valueTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="DateInputTableViewCell" superclassName="UITableViewCell">
@@ -538,14 +469,17 @@
         <class className="MemberInfoViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MemberInfoViewController.h"/>
         </class>
-        <class className="TripActivitiesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TripActivitiesViewController.h"/>
+        <class className="TripAccountsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TripAccountsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="addActivity:"/>
             </relationships>
         </class>
-        <class className="TripDetailTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TripDetailTableViewController.h"/>
+        <class className="TripDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TripDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addAccount:"/>
+            </relationships>
         </class>
         <class className="TripListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TripListViewController.h"/>
@@ -555,9 +489,6 @@
         </class>
         <class className="UserTripActivitiesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UserTripActivitiesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showMemberInfo:"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -566,6 +497,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="leV-wZ-kvJ"/>
+        <segue reference="8Tl-nM-SF0"/>
+        <segue reference="pxv-J3-EgJ"/>
     </inferredMetricsTieBreakers>
 </document>

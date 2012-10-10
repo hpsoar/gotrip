@@ -6,40 +6,33 @@
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "AddActivityViewController.h"
+#import "AddAccountViewController.h"
 #import "EditableCell.h"
 #import "TripDatabase.h"
 #import "TextFieldDelegate.h"
 
-@interface AddActivityViewController ()
+@interface AddAccountViewController ()
 
 @end
 
-@implementation AddActivityViewController
+@implementation AddAccountViewController
 @synthesize trip = _trip;
 
 - (EditableCell *)cellForRow:(NSInteger)row {
     return (EditableCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
 }
 
-- (IBAction)addActivity:(id)sender {
-    Activity *activity = [[TripDatabase dba] insertNewObjectForEntityForName:@"Activity"];
-    EditableCell *cell = [self cellForRow:0];
-    activity.name = cell.valueTextField.text;
-    cell = [self cellForRow:1];
+- (IBAction)addAccount:(id)sender {
+    NSString *title = [self cellForRow:0].valueTextField.text;
+    float cost = [self cellForRow:1].valueTextField.text.floatValue;
     
-    activity.cost = [NSNumber numberWithFloat:[cell.valueTextField.text floatValue]];
-    
-    activity.date = [NSDate dateWithTimeIntervalSinceNow:-(rand() % (3 * 24 * 60 * 60))];
-    [self.trip addActivitiesObject:activity];
-    activity.trip = self.trip;
-    
-    [[TripDatabase dba] save];
-    [self dismissModalViewControllerAnimated:YES];
+    Account *account = [TripDatabase addAccountWithTitle:title withCost:cost toTrip:self.trip];
+
+    [self.delegate addAccountViewController:self didAddAccount:account];
 }
 
 - (IBAction)cancel:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate addAccountViewController:self didAddAccount:nil];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -100,7 +93,8 @@
     }
     else {
         cell.titleLabel.text = @"花费";
-        cell.valueTextField.text = @"￥0";
+        cell.valueTextField.text = @"";
+        cell.valueTextField.placeholder = @"￥0";
         cell.valueTextField.delegate = [TextFieldDelgates moneyTextFieldDelegate];
     }
     return cell;

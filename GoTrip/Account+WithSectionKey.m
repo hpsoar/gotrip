@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "Activity+WithSectionKey.h"
+#import "Account+WithSectionKey.h"
 
-@implementation Activity (WithSectionKey)
+@implementation Account (WithSectionKey)
 
 - (NSDate *)sectionKey {
     unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;

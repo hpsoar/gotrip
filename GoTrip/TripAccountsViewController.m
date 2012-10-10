@@ -6,32 +6,32 @@
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "TripActivitiesViewController.h"
-#import "AddActivityViewController.h"
-#import "ActivityDetailViewController.h"
+#import "TripAccountsViewController.h"
+#import "AddAccountViewController.h"
+#import "AccountDetailViewController.h"
 #import "BillCell.h"
 #import "TripDatabase.h"
 
-@interface TripActivitiesViewController () <NSFetchedResultsControllerDelegate>
+@interface TripAccountsViewController () <NSFetchedResultsControllerDelegate, AddAccountDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 //@property (nonatomic, strong) NSMutableArray *activeDays;
 //@property (nonatomic, strong) NSMutableArray *groupedActivities;
 
-@property (nonatomic, strong) Activity *selectedActivity;
+@property (nonatomic, strong) Account *selectedAccount;
 @end
 
-@implementation TripActivitiesViewController
+@implementation TripAccountsViewController
 @synthesize fetchedResultsController = _fetchedResultsController;
 //@synthesize activeDays = _activeDays;
 //@synthesize groupedActivities = _groupedActivities;
-@synthesize selectedActivity = _selectedActivity;
+@synthesize selectedAccount = _selectedAccount;
 
-static NSString *kAddActivitySegue = @"Add Activity";
-static NSString *kShowActivityDetailSegue = @"Show Activity Detail";
+static NSString *SegueAddTripAccount = @"Add Trip Account";
+static NSString *SegueShowAccountDetail = @"Show Trip Account Detail";
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (!_fetchedResultsController) {
-        NSFetchRequest *fetchRequest = [[TripDatabase dba] fetchRequestForEntity:@"Activity" sortBy:@"date"];
+        NSFetchRequest *fetchRequest = [[TripDatabase dba] fetchRequestForEntity:@"Account" sortBy:@"date"];
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"trip = %@", self.trip];
         _fetchedResultsController = [[TripDatabase dba] fetchedResultsControllerForFetchRequest:fetchRequest sectionNameKeyPath:@"sectionKey" cacheName:@"Root"];
         _fetchedResultsController.delegate = self;
@@ -40,19 +40,24 @@ static NSString *kShowActivityDetailSegue = @"Show Activity Detail";
     return _fetchedResultsController;
 }
 
+- (void)addAccountViewController:(AddAccountViewController *)controller didAddAccount:(Account *)account {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (IBAction)addActivity:(id)sender {
-    [self performSegueWithIdentifier:kAddActivitySegue sender:self];
+    [self performSegueWithIdentifier:SegueAddTripAccount sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kAddActivitySegue]) {
+    if ([segue.identifier isEqualToString:SegueAddTripAccount]) {
         UINavigationController *navigation = (UINavigationController *)(segue.destinationViewController);
-        AddActivityViewController *controller = (AddActivityViewController *)(navigation.topViewController);
+        AddAccountViewController *controller = (AddAccountViewController *)(navigation.topViewController);
         controller.trip = self.trip;
+        controller.delegate = self;
     }
-    else if ([segue.identifier isEqualToString:kShowActivityDetailSegue]) {
-        ActivityDetailViewController *controller = (ActivityDetailViewController *)segue.destinationViewController;
-        controller.activity = self.selectedActivity;
+    else if ([segue.identifier isEqualToString:SegueShowAccountDetail]) {
+        AccountDetailViewController *controller = (AccountDetailViewController *)segue.destinationViewController;
+        controller.account = self.selectedAccount;
     }
 }
 
@@ -117,14 +122,14 @@ static NSString *kShowActivityDetailSegue = @"Show Activity Detail";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
-    Activity *activity = [[sectionInfo objects] objectAtIndex:0];
-    return [activity.date toFullDate];
+    Account *account = [[sectionInfo objects] objectAtIndex:0];
+    return [account.date toFullDate];
 }
 
 - (void)configureCell:(BillCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    Activity *activity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.title = activity.name;
-    cell.value = activity.cost;
+    Account *account = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.title = account.title;
+    cell.value = account.cost;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,8 +150,8 @@ static NSString *kShowActivityDetailSegue = @"Show Activity Detail";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedActivity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:kShowActivityDetailSegue sender:self];
+    self.selectedAccount = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:SegueShowAccountDetail sender:self];
 }
 
 

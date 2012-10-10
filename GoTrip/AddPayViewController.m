@@ -23,15 +23,15 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(addPay)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-    self.titleLabel.text = [NSString stringWithFormat:@"%@为%@付了", self.member.name, self.activity.name];
-    self.amountTextField.text = [NSString stringWithFormat:@"￥%@", [TripDatabase costRemainForActivity:self.activity]];
-    self.amountTextField.delegate = self;
-    [self.amountTextField becomeFirstResponder];
+//    self.titleLabel.text = [NSString stringWithFormat:@"%@为%@付了", self.member.name, self.activity.name];
+//    self.amountTextField.text = [NSString stringWithFormat:@"￥%@", [TripDatabase costRemainForActivity:self.activity]];
+//    self.amountTextField.delegate = self;
+//    [self.amountTextField becomeFirstResponder];
 }
 
 - (void)addPay {
-    [TripDatabase addPay:[NSNumber numberWithFloat:self.amountTextField.text.floatValue] byMember:self.member forActivity:self.activity];
-    [[TripDatabase dba] save];
+//    [TripDatabase addPay:[NSNumber numberWithFloat:self.amountTextField.text.floatValue] byMember:self.member forActivity:self.activity];
+//    [[TripDatabase dba] save];
 
     [self dismissModalViewControllerAnimated:YES];
 }

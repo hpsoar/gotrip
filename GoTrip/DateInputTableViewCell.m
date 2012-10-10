@@ -23,7 +23,7 @@
 // Initialization code
 	self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
 	[datePicker setDatePickerMode:UIDatePickerModeDate];
-	datePicker.date = self.dateValue;
+    datePicker.date = self.dateValue;
 	[datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 	
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

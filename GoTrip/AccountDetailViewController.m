@@ -6,23 +6,23 @@
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "ActivityDetailViewController.h"
-#import "ChooseActivityMemberViewController.h"
-#import "ChoosePayerViewController.h"
+#import "AccountDetailViewController.h"
+//#import "ChooseActivityMemberViewController.h"
+//#import "ChoosePayerViewController.h"
 #import "EditableCell.h"
 #import "DateInputTableViewCell.h"
 #import "Datetime+FormattedString.h"
-#import "BillCell.h" // rename to bill cell
-#import "Pay.h"
+#import "BillCell.h"
+#import "SubAccount.h"
 #import "Member.h"
 #import "TextFieldDelegate.h"
 
-@interface ActivityDetailViewController () <DateInputTableViewCellDelegate>
+@interface AccountDetailViewController () <DateInputTableViewCellDelegate>
 
 @end
 
-@implementation ActivityDetailViewController
-@synthesize activity = _activity;
+@implementation AccountDetailViewController
+@synthesize account = _account;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -74,9 +74,9 @@
         case 0:
             return 3;
         case 1:
-            return self.activity.pays.count + 1;
+            return self.account.expenditures.count + 1;
         case 2:
-            return self.activity.members.count + 1;
+            return self.account.consumptions.count;
         default:
             return 0;
     }
@@ -87,9 +87,9 @@
         case 0:
             return nil;
         case 1:
-            return @"付款人";
+            return @"支付账单";
         case 2:
-            return @"参与者";
+            return @"消费账单";
         default:
             return nil;
     }
@@ -104,7 +104,7 @@
             cell = [[DateInputTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         cell.titleLabel.text = @"日期";
-        cell.valueTextField.text = [self.activity.date toFullDate];
+        cell.valueTextField.text = [self.account.date toFullDate];
         return cell;
     }
     else {
@@ -115,11 +115,11 @@
         }
         if (row == 0) {
             cell.titleLabel.text = @"标题";
-            cell.valueTextField.text = self.activity.name;
+            cell.valueTextField.text = self.account.title;
         }
         else {
             cell.titleLabel.text = @"花费";
-            cell.valueTextField.text = [NSString stringWithFormat:@"￥%@", self.activity.cost];
+            cell.valueTextField.text = [NSString stringWithFormat:@"￥%@", self.account.cost];
             cell.valueTextField.delegate = [TextFieldDelgates moneyTextFieldDelegate];
         }
         return cell;
@@ -149,29 +149,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForPayerAtRow:(NSInteger) row {
-    if (row == self.activity.pays.count) {
-        return [self chooserCellForTableView:tableView withTitle: @"选择付款人"];
+    if (row == self.account.expenditures.count) {
+        return [self chooserCellForTableView:tableView withTitle: @"选择支付者"];
     }
     else {
         BillCell *cell = [self costCellForTableView:tableView];
-        Pay *pay = [self.activity.pays.allObjects objectAtIndex:row];
-        cell.title = pay.payer.name;
+        SubAccount *pay = [self.account.expenditures.allObjects objectAtIndex:row];
+        cell.title = pay.owner.name;
         cell.value = pay.amount;
         return cell;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForMemberAtRow:(NSInteger)row {
-    if (row == self.activity.members.count) {
-        return [self chooserCellForTableView:tableView withTitle: @"选择参与者"];
-    }
-    else {
-        BillCell *cell = [self costCellForTableView:tableView];
-        Member *member = [self.activity.members.allObjects objectAtIndex:row];
-        cell.title = member.name;
-        cell.value = [NSNumber numberWithFloat:self.activity.cost.floatValue / self.activity.members.count];
-        return cell;
-    }
+    BillCell *cell = [self costCellForTableView:tableView];
+    SubAccount *consumption = [self.account.consumptions.allObjects objectAtIndex:row];
+    cell.title = consumption.owner.name;
+    cell.value = consumption.amount;
+    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -227,17 +222,12 @@
 }
 */
 
-static NSString *kChooseActivityMemberSegue = @"Choose Activity Member";
-static NSString *kChooseActivityPayerSegue = @"Choose Activity Payer";
+static NSString *SegueChoosePayer = @"Choose Account Payer";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kChooseActivityMemberSegue]) {
-        ChooseActivityMemberViewController *controller = (ChooseActivityMemberViewController*)segue.destinationViewController;
-        controller.activity = self.activity;
-    }
-    else if ([segue.identifier isEqualToString:kChooseActivityPayerSegue]) {
-        ChoosePayerViewController *controller = (ChoosePayerViewController *)segue.destinationViewController;
-        controller.activity = self.activity;
+    if ([segue.identifier isEqualToString:SegueChoosePayer]) {
+//        ChoosePayerViewController *controller = (ChoosePayerViewController *)segue.destinationViewController;
+//        controller.activity = self.activity;
     }
 }
 
@@ -245,11 +235,8 @@ static NSString *kChooseActivityPayerSegue = @"Choose Activity Payer";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 2 && indexPath.row == self.activity.members.count) {
-        [self performSegueWithIdentifier:kChooseActivityMemberSegue sender:self];
-    }
-    else if (indexPath.section == 1 && indexPath.row == self.activity.pays.count) {
-        [self performSegueWithIdentifier:kChooseActivityPayerSegue sender:self];
+    if (indexPath.section == 1 && indexPath.row == self.account.expenditures.count) {
+        [self performSegueWithIdentifier:SegueChoosePayer sender:self];
     }
 }
 

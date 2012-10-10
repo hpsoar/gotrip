@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Trip.h"
 
-@interface TripDetailTableViewController : UITableViewController
+@interface TripDetailViewController : UITableViewController
 @property (nonatomic, strong) Trip *trip;
 @end

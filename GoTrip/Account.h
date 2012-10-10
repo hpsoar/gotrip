@@ -1,5 +1,5 @@
 //
-//  Member.h
+//  Account.h
 //  GoTrip
 //
 //  Created by Aldrich Huang on 10/10/2012.
@@ -11,18 +11,18 @@
 
 @class SubAccount, Trip;
 
-@interface Member : NSManagedObject
+@interface Account : NSManagedObject
 
-@property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSString * mobile;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * qq;
+@property (nonatomic, retain) NSNumber * cost;
+@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSString * location;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSSet *consumptions;
 @property (nonatomic, retain) NSSet *expenditures;
-@property (nonatomic, retain) NSSet *trips;
+@property (nonatomic, retain) Trip *trip;
 @end
 
-@interface Member (CoreDataGeneratedAccessors)
+@interface Account (CoreDataGeneratedAccessors)
 
 - (void)addConsumptionsObject:(SubAccount *)value;
 - (void)removeConsumptionsObject:(SubAccount *)value;
@@ -33,10 +33,5 @@
 - (void)removeExpendituresObject:(SubAccount *)value;
 - (void)addExpenditures:(NSSet *)values;
 - (void)removeExpenditures:(NSSet *)values;
-
-- (void)addTripsObject:(Trip *)value;
-- (void)removeTripsObject:(Trip *)value;
-- (void)addTrips:(NSSet *)values;
-- (void)removeTrips:(NSSet *)values;
 
 @end

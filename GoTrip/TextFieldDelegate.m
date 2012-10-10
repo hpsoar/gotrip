@@ -43,7 +43,8 @@
 @implementation MoneyTextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    textField.text = [textField.text substringFromIndex:1];
+    if (textField.text.length > 0)
+        textField.text = [textField.text substringFromIndex:1];
     return YES;
 }
 

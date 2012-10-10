@@ -6,25 +6,46 @@
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "TripDetailTableViewController.h"
+#import "TripDetailViewController.h"
 #import "AddMemberToTripViewController.h"
-#import "TripActivitiesViewController.h"
+#import "TripAccountsViewController.h"
 #import "UserTripActivitiesViewController.h"
+#import "AddAccountViewController.h"
+#import "AccountDetailViewController.h"
 #import "BillCell.h"
 #import "MemberCostCell.h"
 #import "Utility.h"
 #import "TripDatabase.h"
 
-@interface TripDetailTableViewController ()
+@interface TripDetailViewController () <AddAccountDelegate>
 @property (nonatomic, strong) Member *selectedMember;
+@property (nonatomic, strong) Account *currentAccount;
 @end
 
-@implementation TripDetailTableViewController
+@implementation TripDetailViewController
 
 @synthesize trip = _trip;
 @synthesize selectedMember = _selectedMember;
+@synthesize currentAccount = _currentAccount;
 
-// TODO: also need the members' pays for the trip
+
+static NSString *SegueAddTripMember = @"Add Trip Member";
+static NSString *SegueShowTripAccounts = @"Show Trip Accounts";
+static NSString *SegueShowTripAccountsForUser = @"Show Trip Accounts For User";
+static NSString *SegueAddAccountToTrip = @"Add Trip Account";
+static NSString *SegueEditTripAccount = @"Edit Trip Account";
+
+- (IBAction)addAccount:(id)sender {
+    [self performSegueWithIdentifier:SegueAddAccountToTrip sender:self];
+}
+
+- (void)addAccountViewController:(AddAccountViewController *)controller didAddAccount:(Account *)account {
+    [self dismissModalViewControllerAnimated:YES];
+    if (account) {
+        self.currentAccount = account;
+        [self performSegueWithIdentifier:SegueEditTripAccount sender:self];
+    }
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -42,7 +63,7 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = self.trip.name;
 }
 
@@ -104,7 +125,7 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         cell.title = @"总花费";
-        cell.value = [TripDatabase computeCostForTrip:self.trip];
+        cell.value = [TripDatabase costForTrip:self.trip];
         return cell;
     }
     else if (indexPath.row < self.trip.members.count){
@@ -116,8 +137,8 @@
         }
         Member *member = [self.trip.members.allObjects objectAtIndex:indexPath.row];
         cell.name = member.name;
-        cell.pay = [TripDatabase computePayForMember:member forTrip:self.trip];
-        cell.cost = [TripDatabase computeCostForMember:member forTrip:self.trip];
+        cell.pay = [TripDatabase payByMember:member inTrip:self.trip];
+        cell.cost = [TripDatabase costForMember:member inTrip:self.trip];
         return cell;
     }
     else {
@@ -131,15 +152,15 @@
     }
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) return UITableViewCellEditingStyleNone;
-    if (indexPath.row < self.trip.members.count) {
-        return UITableViewCellEditingStyleDelete;
-    }
-    else {
-        return UITableViewCellEditingStyleInsert;
-    }
-}
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.section == 0) return UITableViewCellEditingStyleNone;
+//    if (indexPath.row < self.trip.members.count) {
+//        return UITableViewCellEditingStyleDelete;
+//    }
+//    else {
+//        return UITableViewCellEditingStyleInsert;
+//    }
+//}
 
 /*
 // Override to support conditional editing of the table view.
@@ -150,17 +171,17 @@
 }
 */
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.trip removeMembersObject:[self.trip.members.allObjects objectAtIndex:indexPath.row]];
-        [[TripDatabase dba] save];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [self.trip removeMembersObject:[self.trip.members.allObjects objectAtIndex:indexPath.row]];
+//        [[TripDatabase dba] save];
+//        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+//    }   
+//    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//    }   
+//}
 
 
 /*
@@ -181,36 +202,43 @@
 
 #pragma mark - Table view delegate
 
-static NSString *kAddTripMemberSegue = @"Add Trip Member";
-static NSString *kShowTripActivities = @"Show Trip Activities";
-static NSString *kShowTripActivitiesForUser = @"Show Trip Activities For User";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        [self performSegueWithIdentifier:kShowTripActivities sender:self];
+        [self performSegueWithIdentifier:SegueShowTripAccounts sender:self];
     }
     else if (indexPath.row < self.trip.members.count){
         self.selectedMember = [self.trip.members.allObjects objectAtIndex:indexPath.row];
-        [self performSegueWithIdentifier:kShowTripActivitiesForUser sender:self];
+        [self performSegueWithIdentifier:SegueShowTripAccountsForUser sender:self];
     }
     else {
-        [self performSegueWithIdentifier:kAddTripMemberSegue sender:self];
+        [self performSegueWithIdentifier:SegueAddTripMember sender:self];
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kAddTripMemberSegue]) {
+    if ([segue.identifier isEqualToString:SegueAddTripMember]) {
         AddMemberToTripViewController *controller = (AddMemberToTripViewController*)(((UINavigationController *)(segue.destinationViewController)).topViewController);
         controller.trip = self.trip;
     }
-    else if ([segue.identifier isEqualToString:kShowTripActivities]) {
-        TripActivitiesViewController *controller =(TripActivitiesViewController *)segue.destinationViewController;
+    else if ([segue.identifier isEqualToString:SegueShowTripAccounts]) {
+        TripAccountsViewController *controller =(TripAccountsViewController *)segue.destinationViewController;
         controller.trip = self.trip;
     }
-    else {
+    else if ([segue.identifier isEqualToString:SegueShowTripAccountsForUser]){
         UserTripActivitiesViewController *controller = (UserTripActivitiesViewController*)segue.destinationViewController;
         controller.trip = self.trip;
         controller.member = self.selectedMember;
+    }
+    else if ([segue.identifier isEqualToString:SegueAddAccountToTrip]) {
+        UINavigationController *navigation = (UINavigationController*)segue.destinationViewController;
+        AddAccountViewController *controller = (AddAccountViewController*)navigation.topViewController;
+        controller.trip = self.trip;
+        controller.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:SegueEditTripAccount]) {
+        AccountDetailViewController *controller = (AccountDetailViewController*)segue.destinationViewController;
+        controller.account = self.currentAccount;
     }
 }
 

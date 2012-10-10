@@ -69,7 +69,9 @@
 - (NSFetchRequest *)fetchRequestForEntity:(NSString *)entityName sortBy:(NSString *)key {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     fetchRequest.entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
-    fetchRequest.sortDescriptors = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:key ascending:YES]];
+    if (key) {
+        fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:key ascending:YES]];
+    }
     return fetchRequest;
 }
 
@@ -101,6 +103,12 @@
 
 - (void)deleteObject:(NSManagedObject *)object {
     [self.managedObjectContext deleteObject:object];
+}
+
+- (NSArray *)executeFetchRequest:(NSFetchRequest *)fetchRequest {
+    NSError *error = nil;
+    NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    return result;
 }
 
 - (void)save {

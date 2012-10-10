@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "TripDetailTableViewController.h"
+#import "TripDetailViewController.h"
 #import "TripListViewController.h"
 #import "AddTripViewController.h"
 #import "TripDatabase.h"
@@ -73,7 +73,7 @@ static NSString *kShowTripDetailSegue = @"Show Trip Detail";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kShowTripDetailSegue]) {
-        TripDetailTableViewController *controller = (TripDetailTableViewController*)segue.destinationViewController;
+        TripDetailViewController *controller = (TripDetailViewController*)segue.destinationViewController;
         controller.trip = self.selectedTrip;
     }
 }

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Activity.h"
+#import "Account+WithSectionKey.h"
 
-@interface ActivityDetailViewController : UITableViewController
-@property (nonatomic, strong) Activity *activity;
+@interface AccountDetailViewController : UITableViewController
+@property (nonatomic, strong) Account *account;
 @end

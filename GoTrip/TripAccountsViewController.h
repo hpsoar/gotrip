@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 @class Trip;
 
-@interface TripActivitiesViewController : UITableViewController
+@interface TripAccountsViewController : UITableViewController
 @property (nonatomic, weak) Trip *trip;
 @end

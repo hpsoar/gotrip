@@ -1,23 +1,20 @@
 //
-//  Trip.m
+//  SubAccount.m
 //  GoTrip
 //
 //  Created by Aldrich Huang on 10/10/2012.
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "Trip.h"
+#import "SubAccount.h"
 #import "Account.h"
 #import "Member.h"
 
 
-@implementation Trip
+@implementation SubAccount
 
-@dynamic cost;
-@dynamic endDate;
-@dynamic name;
-@dynamic startDate;
-@dynamic accounts;
-@dynamic members;
+@dynamic amount;
+@dynamic account;
+@dynamic owner;
 
 @end
