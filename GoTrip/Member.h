@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class SubAccount, Trip;
+@class Account, SubAccount, Trip;
 
 @interface Member : NSManagedObject
 
@@ -18,8 +18,8 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * qq;
 @property (nonatomic, retain) NSSet *consumptions;
-@property (nonatomic, retain) NSSet *expenditures;
 @property (nonatomic, retain) NSSet *trips;
+@property (nonatomic, retain) NSSet *payments;
 @end
 
 @interface Member (CoreDataGeneratedAccessors)
@@ -29,14 +29,14 @@
 - (void)addConsumptions:(NSSet *)values;
 - (void)removeConsumptions:(NSSet *)values;
 
-- (void)addExpendituresObject:(SubAccount *)value;
-- (void)removeExpendituresObject:(SubAccount *)value;
-- (void)addExpenditures:(NSSet *)values;
-- (void)removeExpenditures:(NSSet *)values;
-
 - (void)addTripsObject:(Trip *)value;
 - (void)removeTripsObject:(Trip *)value;
 - (void)addTrips:(NSSet *)values;
 - (void)removeTrips:(NSSet *)values;
+
+- (void)addPaymentsObject:(Account *)value;
+- (void)removePaymentsObject:(Account *)value;
+- (void)addPayments:(NSSet *)values;
+- (void)removePayments:(NSSet *)values;
 
 @end

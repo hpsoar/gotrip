@@ -8,7 +8,7 @@
 
 #import "AccountDetailViewController.h"
 //#import "ChooseActivityMemberViewController.h"
-//#import "ChoosePayerViewController.h"
+#import "ChoosePayerViewController.h"
 #import "EditableCell.h"
 #import "DateInputTableViewCell.h"
 #import "Datetime+FormattedString.h"
@@ -40,7 +40,7 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //self.navigationItem.title = self.activity.name;
 }
 
@@ -74,7 +74,7 @@
         case 0:
             return 3;
         case 1:
-            return self.account.expenditures.count + 1;
+            return 1;
         case 2:
             return self.account.consumptions.count;
         default:
@@ -95,6 +95,15 @@
     }
 }
 
+- (EditableCell *)editableCellForTableView:(UITableView *)tableView {
+    static NSString *CellIdentifier = @"EditableCell";
+    EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil] lastObject];
+    }
+    return cell;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForBasicInfoSectionAtRow:(NSInteger)row {
     if (row == 2) {
         // TODO: use EditableCell with customized delegate
@@ -108,11 +117,8 @@
         return cell;
     }
     else {
-        static NSString *CellIdentifier = @"EditableCell";
-        EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (!cell) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil] lastObject];
-        }
+        EditableCell *cell = [self editableCellForTableView:tableView];
+
         if (row == 0) {
             cell.titleLabel.text = @"标题";
             cell.valueTextField.text = self.account.title;
@@ -149,16 +155,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForPayerAtRow:(NSInteger) row {
-    if (row == self.account.expenditures.count) {
-        return [self chooserCellForTableView:tableView withTitle: @"选择支付者"];
-    }
-    else {
-        BillCell *cell = [self costCellForTableView:tableView];
-        SubAccount *pay = [self.account.expenditures.allObjects objectAtIndex:row];
-        cell.title = pay.owner.name;
-        cell.value = pay.amount;
-        return cell;
-    }
+    EditableCell *cell = [self editableCellForTableView:tableView];
+    cell.titleLabel.text = @"付款人";
+    cell.valueTextField.text = self.account.payer.name;
+    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForMemberAtRow:(NSInteger)row {
@@ -226,8 +226,8 @@ static NSString *SegueChoosePayer = @"Choose Account Payer";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:SegueChoosePayer]) {
-//        ChoosePayerViewController *controller = (ChoosePayerViewController *)segue.destinationViewController;
-//        controller.activity = self.activity;
+        ChoosePayerViewController *controller = (ChoosePayerViewController *)segue.destinationViewController;
+        controller.account = self.account;
     }
 }
 
@@ -235,7 +235,7 @@ static NSString *SegueChoosePayer = @"Choose Account Payer";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1 && indexPath.row == self.account.expenditures.count) {
+    if (indexPath.section == 1) {
         [self performSegueWithIdentifier:SegueChoosePayer sender:self];
     }
 }

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Activity;
+@class Account;
 
 @interface ChoosePayerViewController : UITableViewController
-@property (nonatomic, strong) Activity *activity;
+@property (nonatomic, strong) Account *account;
 @end

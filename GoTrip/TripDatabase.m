@@ -118,9 +118,8 @@ static DBA *g_tripDatabase;
 + (NSNumber *)payByMember:(Member *)member inTrip:(Trip *)trip {
     __block float totalPay = 0;
     [trip.accounts enumerateObjectsUsingBlock:^(Account *account, BOOL *stop) {
-        [account.expenditures enumerateObjectsUsingBlock:^(SubAccount *subAccount, BOOL *stop){
-            if (subAccount.owner == member) totalPay += subAccount.amount.floatValue;
-        }];
+        if (account.payer == member)
+            totalPay += account.cost.floatValue;
     }];
     return [NSNumber numberWithFloat:totalPay];
 }

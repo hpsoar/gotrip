@@ -87,6 +87,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil] lastObject];
     }
+    cell.valueTextField.enabled = YES;
     if (indexPath.row == 0) {
         cell.titleLabel.text = @"标题";
         cell.valueTextField.placeholder = @"Eat food";

@@ -30,13 +30,14 @@
 		B0CB675E161EDB540013442D /* MemberCostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB675D161EDB540013442D /* MemberCostCell.m */; };
 		B0CB6768161F01D80013442D /* AddMemberToTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6767161F01D80013442D /* AddMemberToTripViewController.m */; };
 		B0CB6775161F57FE0013442D /* CostInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB6774161F57FE0013442D /* CostInputCell.m */; };
-		B0DFA0F816250961001F88FF /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA0F716250960001F88FF /* Member.m */; };
-		B0DFA0FE16250961001F88FF /* SubAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA0FD16250961001F88FF /* SubAccount.m */; };
-		B0DFA10116250961001F88FF /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA10016250961001F88FF /* Trip.m */; };
-		B0DFA10416250D4F001F88FF /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA10316250D4F001F88FF /* Account.m */; };
 		B0DFA107162534FC001F88FF /* TripAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA106162534FC001F88FF /* TripAccountsViewController.m */; };
 		B0DFA10A16253A5C001F88FF /* AddAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA10916253A5B001F88FF /* AddAccountViewController.m */; };
 		B0DFA11316254B82001F88FF /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11216254B81001F88FF /* AccountDetailViewController.m */; };
+		B0DFA11616257F79001F88FF /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11516257F79001F88FF /* Account.m */; };
+		B0DFA11916257F7A001F88FF /* SubAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11816257F7A001F88FF /* SubAccount.m */; };
+		B0DFA11C16257F7A001F88FF /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11B16257F7A001F88FF /* Trip.m */; };
+		B0DFA11F16257F7B001F88FF /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11E16257F7B001F88FF /* Member.m */; };
+		B0DFA12216258422001F88FF /* ChoosePayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA12116258422001F88FF /* ChoosePayerViewController.m */; };
 		B0F3AE7A161FD287003E09D8 /* Account+WithSectionKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F3AE79161FD287003E09D8 /* Account+WithSectionKey.m */; };
 		B0F3AE8416200323003E09D8 /* TripDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F3AE8316200323003E09D8 /* TripDatabase.m */; };
 		B0FE1554161D844A005D1C68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FE1553161D844A005D1C68 /* UIKit.framework */; };
@@ -90,20 +91,22 @@
 		B0CB6767161F01D80013442D /* AddMemberToTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberToTripViewController.m; sourceTree = "<group>"; };
 		B0CB6773161F57FE0013442D /* CostInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CostInputCell.h; path = GoTrip/CostInputCell.h; sourceTree = "<group>"; };
 		B0CB6774161F57FE0013442D /* CostInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CostInputCell.m; path = GoTrip/CostInputCell.m; sourceTree = "<group>"; };
-		B0DFA0F616250960001F88FF /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Member.h; path = GoTrip/Member.h; sourceTree = "<group>"; };
-		B0DFA0F716250960001F88FF /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Member.m; path = GoTrip/Member.m; sourceTree = "<group>"; };
-		B0DFA0FC16250961001F88FF /* SubAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubAccount.h; path = GoTrip/SubAccount.h; sourceTree = "<group>"; };
-		B0DFA0FD16250961001F88FF /* SubAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubAccount.m; path = GoTrip/SubAccount.m; sourceTree = "<group>"; };
-		B0DFA0FF16250961001F88FF /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = GoTrip/Trip.h; sourceTree = "<group>"; };
-		B0DFA10016250961001F88FF /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = GoTrip/Trip.m; sourceTree = "<group>"; };
-		B0DFA10216250D4F001F88FF /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = GoTrip/Account.h; sourceTree = "<group>"; };
-		B0DFA10316250D4F001F88FF /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = GoTrip/Account.m; sourceTree = "<group>"; };
 		B0DFA105162534FC001F88FF /* TripAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripAccountsViewController.h; sourceTree = "<group>"; };
 		B0DFA106162534FC001F88FF /* TripAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripAccountsViewController.m; sourceTree = "<group>"; };
 		B0DFA10816253A5B001F88FF /* AddAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAccountViewController.h; sourceTree = "<group>"; };
 		B0DFA10916253A5B001F88FF /* AddAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAccountViewController.m; sourceTree = "<group>"; };
 		B0DFA10B16253EA7001F88FF /* AccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountDetailViewController.h; sourceTree = "<group>"; };
 		B0DFA11216254B81001F88FF /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountDetailViewController.m; sourceTree = "<group>"; };
+		B0DFA11416257F79001F88FF /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = GoTrip/Account.h; sourceTree = "<group>"; };
+		B0DFA11516257F79001F88FF /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = GoTrip/Account.m; sourceTree = "<group>"; };
+		B0DFA11716257F7A001F88FF /* SubAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubAccount.h; path = GoTrip/SubAccount.h; sourceTree = "<group>"; };
+		B0DFA11816257F7A001F88FF /* SubAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubAccount.m; path = GoTrip/SubAccount.m; sourceTree = "<group>"; };
+		B0DFA11A16257F7A001F88FF /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = GoTrip/Trip.h; sourceTree = "<group>"; };
+		B0DFA11B16257F7A001F88FF /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = GoTrip/Trip.m; sourceTree = "<group>"; };
+		B0DFA11D16257F7A001F88FF /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Member.h; path = GoTrip/Member.h; sourceTree = "<group>"; };
+		B0DFA11E16257F7B001F88FF /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Member.m; path = GoTrip/Member.m; sourceTree = "<group>"; };
+		B0DFA12016258422001F88FF /* ChoosePayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePayerViewController.h; sourceTree = "<group>"; };
+		B0DFA12116258422001F88FF /* ChoosePayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePayerViewController.m; sourceTree = "<group>"; };
 		B0F3AE78161FD287003E09D8 /* Account+WithSectionKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Account+WithSectionKey.h"; path = "GoTrip/Account+WithSectionKey.h"; sourceTree = "<group>"; };
 		B0F3AE79161FD287003E09D8 /* Account+WithSectionKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Account+WithSectionKey.m"; path = "GoTrip/Account+WithSectionKey.m"; sourceTree = "<group>"; };
 		B0F3AE8216200323003E09D8 /* TripDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripDatabase.h; path = GoTrip/TripDatabase.h; sourceTree = "<group>"; };
@@ -161,15 +164,15 @@
 		B048B209161DBE2D00215471 /* DBA */ = {
 			isa = PBXGroup;
 			children = (
-				B0DFA0FF16250961001F88FF /* Trip.h */,
-				B0DFA10016250961001F88FF /* Trip.m */,
-				B0DFA0FC16250961001F88FF /* SubAccount.h */,
-				B0DFA0FD16250961001F88FF /* SubAccount.m */,
-				B0DFA0F616250960001F88FF /* Member.h */,
-				B0DFA0F716250960001F88FF /* Member.m */,
+				B0DFA11416257F79001F88FF /* Account.h */,
+				B0DFA11716257F7A001F88FF /* SubAccount.h */,
+				B0DFA11816257F7A001F88FF /* SubAccount.m */,
+				B0DFA11A16257F7A001F88FF /* Trip.h */,
+				B0DFA11B16257F7A001F88FF /* Trip.m */,
+				B0DFA11D16257F7A001F88FF /* Member.h */,
+				B0DFA11E16257F7B001F88FF /* Member.m */,
+				B0DFA11516257F79001F88FF /* Account.m */,
 				B0FE1589161D9DBB005D1C68 /* GoTrip.xcdatamodeld */,
-				B0DFA10216250D4F001F88FF /* Account.h */,
-				B0DFA10316250D4F001F88FF /* Account.m */,
 				B048B205161DBE1A00215471 /* DBA.h */,
 				B048B206161DBE1A00215471 /* DBA.m */,
 				B0F3AE78161FD287003E09D8 /* Account+WithSectionKey.h */,
@@ -208,6 +211,8 @@
 		B0CB675B161EDB000013442D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0DFA12016258422001F88FF /* ChoosePayerViewController.h */,
+				B0DFA12116258422001F88FF /* ChoosePayerViewController.m */,
 				B0DFA11216254B81001F88FF /* AccountDetailViewController.m */,
 				B0DFA10B16253EA7001F88FF /* AccountDetailViewController.h */,
 				B0DFA10816253A5B001F88FF /* AddAccountViewController.h */,
@@ -381,13 +386,14 @@
 				B0A0700A1621CBD4000E8FE9 /* MemberInfoViewController.m in Sources */,
 				B08E07C21621DBA300D8404F /* TextFieldDelegate.m in Sources */,
 				B08E07CA1621E49100D8404F /* PhoneNumberFormatter.m in Sources */,
-				B0DFA0F816250961001F88FF /* Member.m in Sources */,
-				B0DFA0FE16250961001F88FF /* SubAccount.m in Sources */,
-				B0DFA10116250961001F88FF /* Trip.m in Sources */,
-				B0DFA10416250D4F001F88FF /* Account.m in Sources */,
 				B0DFA107162534FC001F88FF /* TripAccountsViewController.m in Sources */,
 				B0DFA10A16253A5C001F88FF /* AddAccountViewController.m in Sources */,
 				B0DFA11316254B82001F88FF /* AccountDetailViewController.m in Sources */,
+				B0DFA11616257F79001F88FF /* Account.m in Sources */,
+				B0DFA11916257F7A001F88FF /* SubAccount.m in Sources */,
+				B0DFA11C16257F7A001F88FF /* Trip.m in Sources */,
+				B0DFA11F16257F7B001F88FF /* Member.m in Sources */,
+				B0DFA12216258422001F88FF /* ChoosePayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

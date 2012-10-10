@@ -7,6 +7,7 @@
 //
 
 #import "Member.h"
+#import "Account.h"
 #import "SubAccount.h"
 #import "Trip.h"
 
@@ -18,7 +19,7 @@
 @dynamic name;
 @dynamic qq;
 @dynamic consumptions;
-@dynamic expenditures;
 @dynamic trips;
+@dynamic payments;
 
 @end

@@ -15,6 +15,7 @@
 @end
 
 @implementation ChoosePayerViewController
+@synthesize account = _account;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,27 +63,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.activity.trip.members.count;
+    return self.account.trip.members.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"BillCell";
-    BillCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"DefaultCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil] lastObject];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    Member *member = [self.activity.trip.members.allObjects objectAtIndex:indexPath.row];
-    cell.title = member.name;
-    Pay *pay = [TripDatabase payForActivity:self.activity byMember:member];
-    if (pay) {
+    Member *member = [self.account.trip.members.allObjects objectAtIndex:indexPath.row];
+    cell.textLabel.text = member.name;
+    if (member == self.account.payer) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        cell.value = pay.amount;
-    }
-    else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.value = nil;
     }
     return cell;
 }
@@ -130,22 +125,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Member *member = [self.activity.trip.members.allObjects objectAtIndex:indexPath.row];
-    BillCell *cell = (BillCell*)[tableView cellForRowAtIndexPath:indexPath];
-    Pay *pay = [TripDatabase payForActivity:self.activity byMember:member];
-    if (pay) {
-        [TripDatabase removePay:pay];
-        [[TripDatabase dba] save];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.value = nil;
-    }
-    else {
-        AddPayViewController *controller = [[AddPayViewController alloc] initWithNibName:@"AddPayView" bundle:nil];
-        controller.member = member;
-        controller.activity = self.activity;
-        
-        [self presentModalViewController:[[UINavigationController alloc] initWithRootViewController:controller] animated:YES];
-    }
+    Member *member = [self.account.trip.members.allObjects objectAtIndex:indexPath.row];
+    NSInteger oldRow = [self.account.trip.members.allObjects indexOfObject:self.account.payer];
+    UITableViewCell *oldcell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:oldRow inSection:0]];
+    oldcell.accessoryType = UITableViewCellAccessoryNone;
+    UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+    newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    self.account.payer = member;
 }
 
 
