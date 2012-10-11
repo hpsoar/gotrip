@@ -19,10 +19,10 @@
 		B053D8C11623134600332960 /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B053D8BE1623134600332960 /* EditableCell.xib */; };
 		B053D8C21623134600332960 /* TripItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B053D8BF1623134600332960 /* TripItemCell.xib */; };
 		B053D8C41623136200332960 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B053D8C31623136200332960 /* iPhone.storyboard */; };
-		B070146D16267D1E00DA2175 /* ConsumptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B070146C16267D1E00DA2175 /* ConsumptionCell.xib */; };
 		B070147116267E9400DA2175 /* ConsumptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B070147016267E9400DA2175 /* ConsumptionCell.m */; };
 		B070147416268DBB00DA2175 /* SubAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B070147316268DBB00DA2175 /* SubAccount.m */; };
 		B07014771626A84D00DA2175 /* UserTripAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B07014761626A84D00DA2175 /* UserTripAccountsViewController.m */; };
+		B07014791626B18900DA2175 /* ConsumptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B07014781626B18900DA2175 /* ConsumptionCell.xib */; };
 		B08E07C21621DBA300D8404F /* TextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B08E07C11621DBA300D8404F /* TextFieldDelegate.m */; };
 		B08E07CA1621E49100D8404F /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B08E07C91621E49100D8404F /* PhoneNumberFormatter.m */; };
 		B0A06FF91621A6F9000E8FE9 /* AddPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A06FF81621A6F9000E8FE9 /* AddPayView.xib */; };
@@ -75,13 +75,13 @@
 		B053D8BE1623134600332960 /* EditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditableCell.xib; path = GoTrip/EditableCell.xib; sourceTree = "<group>"; };
 		B053D8BF1623134600332960 /* TripItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TripItemCell.xib; path = GoTrip/TripItemCell.xib; sourceTree = "<group>"; };
 		B053D8C31623136200332960 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
-		B070146C16267D1E00DA2175 /* ConsumptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsumptionCell.xib; sourceTree = "<group>"; };
 		B070146F16267E9400DA2175 /* ConsumptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConsumptionCell.h; path = GoTrip/ConsumptionCell.h; sourceTree = "<group>"; };
 		B070147016267E9400DA2175 /* ConsumptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConsumptionCell.m; path = GoTrip/ConsumptionCell.m; sourceTree = "<group>"; };
 		B070147216268DBB00DA2175 /* SubAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubAccount.h; path = GoTrip/SubAccount.h; sourceTree = "<group>"; };
 		B070147316268DBB00DA2175 /* SubAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubAccount.m; path = GoTrip/SubAccount.m; sourceTree = "<group>"; };
 		B07014751626A84D00DA2175 /* UserTripAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTripAccountsViewController.h; sourceTree = "<group>"; };
 		B07014761626A84D00DA2175 /* UserTripAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTripAccountsViewController.m; sourceTree = "<group>"; };
+		B07014781626B18900DA2175 /* ConsumptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConsumptionCell.xib; path = GoTrip/ConsumptionCell.xib; sourceTree = "<group>"; };
 		B08E07C01621DBA300D8404F /* TextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldDelegate.h; sourceTree = "<group>"; };
 		B08E07C11621DBA300D8404F /* TextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldDelegate.m; sourceTree = "<group>"; };
 		B08E07C81621E49100D8404F /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
@@ -195,6 +195,7 @@
 		B048B240161DD44E00215471 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B07014781626B18900DA2175 /* ConsumptionCell.xib */,
 				B053D8BD1623134600332960 /* BillCell.xib */,
 				B053D8BE1623134600332960 /* EditableCell.xib */,
 				B053D8BF1623134600332960 /* TripItemCell.xib */,
@@ -211,7 +212,6 @@
 				B0CB6774161F57FE0013442D /* CostInputCell.m */,
 				B0227EE216214C4E00AED747 /* EditableCell.h */,
 				B0227EE316214C4E00AED747 /* EditableCell.m */,
-				B070146C16267D1E00DA2175 /* ConsumptionCell.xib */,
 				B070146F16267E9400DA2175 /* ConsumptionCell.h */,
 				B070147016267E9400DA2175 /* ConsumptionCell.m */,
 			);
@@ -367,7 +367,7 @@
 				B053D8C11623134600332960 /* EditableCell.xib in Resources */,
 				B053D8C21623134600332960 /* TripItemCell.xib in Resources */,
 				B053D8C41623136200332960 /* iPhone.storyboard in Resources */,
-				B070146D16267D1E00DA2175 /* ConsumptionCell.xib in Resources */,
+				B07014791626B18900DA2175 /* ConsumptionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
