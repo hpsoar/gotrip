@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-2352" y="-297"/>
         </scene>
-        <!--Add Member To Trip View Controller - 添加旅行同伴-->
+        <!--Add Member To Trip View Controller - 添加同伴-->
         <scene sceneID="Bip-e2-RTi">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5r-x2-Wjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -38,11 +38,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="FsL-xS-Gv2">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="同伴名字" minimumFontSize="17" clearButtonMode="whileEditing" id="xnX-X4-qfF">
-                                    <rect key="frame" x="11" y="30" width="298" height="31"/>
+                                    <rect key="frame" x="11" y="14" width="298" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
@@ -52,7 +52,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberCell" id="RIh-GS-cgi">
-                                <rect key="frame" x="0.0" y="117" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -66,13 +66,13 @@
                             <outlet property="delegate" destination="7Mk-Xg-GOu" id="4e8-zj-u5t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="添加旅行同伴" id="ZJv-LB-ZQW">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DzJ-vh-5mQ">
+                    <navigationItem key="navigationItem" title="添加同伴" id="ZJv-LB-ZQW">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="DzJ-vh-5mQ">
                             <connections>
                                 <action selector="cancel:" destination="7Mk-Xg-GOu" id="z8u-4K-y99"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FOB-uL-3aV">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="FOB-uL-3aV">
                             <connections>
                                 <action selector="addMember:" destination="7Mk-Xg-GOu" id="PRv-fr-NyG"/>
                             </connections>
@@ -136,12 +136,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="fha-eS-XfT">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7Tw-0O-cZc">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="7Tw-0O-cZc">
                             <connections>
                                 <action selector="cancel:" destination="gOK-Mm-aC7" id="h5v-xd-acF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="f9V-Ue-ciN">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="f9V-Ue-ciN">
                             <connections>
                                 <action selector="addAccount:" destination="gOK-Mm-aC7" id="gaq-kn-9w5"/>
                             </connections>
@@ -173,7 +173,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Iyo-vM-XqN" kind="push" identifier="Show Activity Detail" id="leV-wZ-kvJ"/>
+                        <segue destination="Iyo-vM-XqN" kind="push" identifier="Show Trip Account Detail" id="leV-wZ-kvJ"/>
                         <segue destination="z7H-jH-JX5" kind="push" identifier="Show Member Info" id="q7G-MA-e0S"/>
                     </connections>
                 </tableViewController>
@@ -478,9 +478,6 @@
         </class>
         <class className="TripDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TripDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addAccount:"/>
-            </relationships>
         </class>
         <class className="TripListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TripListViewController.h"/>
@@ -490,9 +487,6 @@
         </class>
         <class className="UserTripAccountsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UserTripAccountsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showMemberInfo:"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

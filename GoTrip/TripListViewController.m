@@ -49,7 +49,7 @@
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTrip:)];
     
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
     if (self.fetchedResultsController.fetchedObjects.count > 0)
         self.emptyTripListImageView.hidden = YES;
     else

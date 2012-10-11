@@ -24,6 +24,7 @@
     if (self) {
         // Custom initialization
     }
+    self.navigationItem.backBarButtonItem.title = @"返回";
     return self;
 }
 
@@ -35,6 +36,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.editButtonItem.title = @"编辑";
     self.navigationItem.title = self.member.name;
 }
 
@@ -43,6 +45,10 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -154,6 +160,7 @@ static int semaphore = 0;
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     
+    self.editButtonItem.title = self.editing ? @"完成" : @"编辑";
     if (!editing) {
         EditableCell *cell = [self cellForRow:0];
         if (!cell.valueIsEmpty) self.member.name = cell.valueTextField.text;

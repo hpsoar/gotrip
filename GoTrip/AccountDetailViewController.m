@@ -44,6 +44,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.editButtonItem.title = @"编辑";
     //self.navigationItem.title = self.activity.name;
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
 //                                   initWithTarget:self
@@ -239,6 +240,7 @@
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     //[self.navigationItem setHidesBackButton:editing animated:YES];
+    self.editButtonItem.title = self.editing ? @"完成" : @"编辑";
     
     if (!self.editing) {
         [self.currentTextField resignFirstResponder];

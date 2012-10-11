@@ -25,6 +25,10 @@
 @synthesize selectedAccount = _selectedAccount;
 @synthesize balanceAccounts = _balanceAccounts;
 
+
+static NSString *SegueShowMemberInfo = @"Show Member Info";
+static NSString *SegueShowTripAccountDetail = @"Show Trip Account Detail";
+
 - (NSMutableArray *)balanceAccounts {
     if (_balanceAccounts == nil) {
         _balanceAccounts = [[NSMutableArray alloc] init];
@@ -71,7 +75,10 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.navigationItem.title = [NSString stringWithFormat:@"%@-花费清单", self.member.name];
 }
 
@@ -87,9 +94,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-static NSString *kShowMemberInfo = @"Show Member Info";
 - (IBAction)showMemberInfo:(id)sender {
-    [self performSegueWithIdentifier:kShowMemberInfo sender:self];
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:nil action:nil];
+//    [self.navigationItem setBackBarButtonItem:backItem];
+    [self performSegueWithIdentifier:SegueShowMemberInfo sender:self];
 }
 
 #pragma mark - Table view data source
@@ -131,20 +139,19 @@ static NSString *kShowMemberInfo = @"Show Member Info";
 }
 
 #pragma mark - Table view delegate
-static NSString *kShowActivityDetailSegue = @"Show Activity Detail";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedAccount = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:kShowActivityDetailSegue sender:self];
+    [self performSegueWithIdentifier:SegueShowTripAccountDetail sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kShowActivityDetailSegue]) {
+    if ([segue.identifier isEqualToString:SegueShowTripAccountDetail]) {
         AccountDetailViewController *controller = (AccountDetailViewController *)segue.destinationViewController;
         controller.account = self.selectedAccount;
     }
-    else if ([segue.identifier isEqualToString:kShowMemberInfo]){
+    else if ([segue.identifier isEqualToString:SegueShowMemberInfo]){
         MemberInfoViewController *controller = (MemberInfoViewController*)segue.destinationViewController;
         controller.member = self.member;
     }
