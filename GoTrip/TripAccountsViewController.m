@@ -31,7 +31,8 @@ static NSString *SegueShowAccountDetail = @"Show Trip Account Detail";
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (!_fetchedResultsController) {
-        NSFetchRequest *fetchRequest = [[TripDatabase dba] fetchRequestForEntity:@"Account" sortBy:@"date"];
+        NSFetchRequest *fetchRequest = [[TripDatabase dba] fetchRequestForEntity:@"Account" sortBy:nil];
+        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"trip = %@", self.trip];
         _fetchedResultsController = [[TripDatabase dba] fetchedResultsControllerForFetchRequest:fetchRequest sectionNameKeyPath:@"sectionKey" cacheName:@"Root"];
         _fetchedResultsController.delegate = self;
@@ -167,6 +168,10 @@ static NSString *SegueShowAccountDetail = @"Show Trip Account Detail";
             break;
         case NSFetchedResultsChangeUpdate:
             [self configureCell:(BillCell *)[self.tableView cellForRowAtIndexPath:indexPath] forRowAtIndexPath:indexPath];
+            break;
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         default:
             break;

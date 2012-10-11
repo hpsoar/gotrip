@@ -21,6 +21,8 @@
 		B053D8C41623136200332960 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B053D8C31623136200332960 /* iPhone.storyboard */; };
 		B070146D16267D1E00DA2175 /* ConsumptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B070146C16267D1E00DA2175 /* ConsumptionCell.xib */; };
 		B070147116267E9400DA2175 /* ConsumptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B070147016267E9400DA2175 /* ConsumptionCell.m */; };
+		B070147416268DBB00DA2175 /* SubAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B070147316268DBB00DA2175 /* SubAccount.m */; };
+		B07014771626A84D00DA2175 /* UserTripAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B07014761626A84D00DA2175 /* UserTripAccountsViewController.m */; };
 		B08E07C21621DBA300D8404F /* TextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B08E07C11621DBA300D8404F /* TextFieldDelegate.m */; };
 		B08E07CA1621E49100D8404F /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B08E07C91621E49100D8404F /* PhoneNumberFormatter.m */; };
 		B0A06FF91621A6F9000E8FE9 /* AddPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A06FF81621A6F9000E8FE9 /* AddPayView.xib */; };
@@ -36,7 +38,6 @@
 		B0DFA10A16253A5C001F88FF /* AddAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA10916253A5B001F88FF /* AddAccountViewController.m */; };
 		B0DFA11316254B82001F88FF /* AccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11216254B81001F88FF /* AccountDetailViewController.m */; };
 		B0DFA11616257F79001F88FF /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11516257F79001F88FF /* Account.m */; };
-		B0DFA11916257F7A001F88FF /* SubAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11816257F7A001F88FF /* SubAccount.m */; };
 		B0DFA11C16257F7A001F88FF /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11B16257F7A001F88FF /* Trip.m */; };
 		B0DFA11F16257F7B001F88FF /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA11E16257F7B001F88FF /* Member.m */; };
 		B0DFA12216258422001F88FF /* ChoosePayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFA12116258422001F88FF /* ChoosePayerViewController.m */; };
@@ -77,6 +78,10 @@
 		B070146C16267D1E00DA2175 /* ConsumptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsumptionCell.xib; sourceTree = "<group>"; };
 		B070146F16267E9400DA2175 /* ConsumptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConsumptionCell.h; path = GoTrip/ConsumptionCell.h; sourceTree = "<group>"; };
 		B070147016267E9400DA2175 /* ConsumptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConsumptionCell.m; path = GoTrip/ConsumptionCell.m; sourceTree = "<group>"; };
+		B070147216268DBB00DA2175 /* SubAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubAccount.h; path = GoTrip/SubAccount.h; sourceTree = "<group>"; };
+		B070147316268DBB00DA2175 /* SubAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubAccount.m; path = GoTrip/SubAccount.m; sourceTree = "<group>"; };
+		B07014751626A84D00DA2175 /* UserTripAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTripAccountsViewController.h; sourceTree = "<group>"; };
+		B07014761626A84D00DA2175 /* UserTripAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTripAccountsViewController.m; sourceTree = "<group>"; };
 		B08E07C01621DBA300D8404F /* TextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldDelegate.h; sourceTree = "<group>"; };
 		B08E07C11621DBA300D8404F /* TextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldDelegate.m; sourceTree = "<group>"; };
 		B08E07C81621E49100D8404F /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
@@ -104,8 +109,6 @@
 		B0DFA11216254B81001F88FF /* AccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountDetailViewController.m; sourceTree = "<group>"; };
 		B0DFA11416257F79001F88FF /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = GoTrip/Account.h; sourceTree = "<group>"; };
 		B0DFA11516257F79001F88FF /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = GoTrip/Account.m; sourceTree = "<group>"; };
-		B0DFA11716257F7A001F88FF /* SubAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubAccount.h; path = GoTrip/SubAccount.h; sourceTree = "<group>"; };
-		B0DFA11816257F7A001F88FF /* SubAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubAccount.m; path = GoTrip/SubAccount.m; sourceTree = "<group>"; };
 		B0DFA11A16257F7A001F88FF /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = GoTrip/Trip.h; sourceTree = "<group>"; };
 		B0DFA11B16257F7A001F88FF /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = GoTrip/Trip.m; sourceTree = "<group>"; };
 		B0DFA11D16257F7A001F88FF /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Member.h; path = GoTrip/Member.h; sourceTree = "<group>"; };
@@ -170,14 +173,14 @@
 			isa = PBXGroup;
 			children = (
 				B0DFA11416257F79001F88FF /* Account.h */,
-				B0DFA11716257F7A001F88FF /* SubAccount.h */,
-				B0DFA11816257F7A001F88FF /* SubAccount.m */,
 				B0DFA11A16257F7A001F88FF /* Trip.h */,
 				B0DFA11B16257F7A001F88FF /* Trip.m */,
 				B0DFA11D16257F7A001F88FF /* Member.h */,
 				B0DFA11E16257F7B001F88FF /* Member.m */,
 				B0DFA11516257F79001F88FF /* Account.m */,
 				B0FE1589161D9DBB005D1C68 /* GoTrip.xcdatamodeld */,
+				B070147216268DBB00DA2175 /* SubAccount.h */,
+				B070147316268DBB00DA2175 /* SubAccount.m */,
 				B048B205161DBE1A00215471 /* DBA.h */,
 				B048B206161DBE1A00215471 /* DBA.m */,
 				B0F3AE78161FD287003E09D8 /* Account+WithSectionKey.h */,
@@ -219,6 +222,8 @@
 		B0CB675B161EDB000013442D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B07014751626A84D00DA2175 /* UserTripAccountsViewController.h */,
+				B07014761626A84D00DA2175 /* UserTripAccountsViewController.m */,
 				B0DFA12016258422001F88FF /* ChoosePayerViewController.h */,
 				B0DFA12116258422001F88FF /* ChoosePayerViewController.m */,
 				B0DFA11216254B81001F88FF /* AccountDetailViewController.m */,
@@ -399,11 +404,12 @@
 				B0DFA10A16253A5C001F88FF /* AddAccountViewController.m in Sources */,
 				B0DFA11316254B82001F88FF /* AccountDetailViewController.m in Sources */,
 				B0DFA11616257F79001F88FF /* Account.m in Sources */,
-				B0DFA11916257F7A001F88FF /* SubAccount.m in Sources */,
 				B0DFA11C16257F7A001F88FF /* Trip.m in Sources */,
 				B0DFA11F16257F7B001F88FF /* Member.m in Sources */,
 				B0DFA12216258422001F88FF /* ChoosePayerViewController.m in Sources */,
 				B070147116267E9400DA2175 /* ConsumptionCell.m in Sources */,
+				B070147416268DBB00DA2175 /* SubAccount.m in Sources */,
+				B07014771626A84D00DA2175 /* UserTripAccountsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

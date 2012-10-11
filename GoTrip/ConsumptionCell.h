@@ -10,7 +10,7 @@
 
 @protocol ConsumptionStateDelegate <NSObject>
 
-- (void)consumptionStateChanged:(NSInteger)index;
+- (void)consumptionStateButtonChanged:(UIButton *)button;
 
 @end
 
@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (nonatomic, strong) id <ConsumptionStateDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIButton *consumptionStateButton;
 
 @end

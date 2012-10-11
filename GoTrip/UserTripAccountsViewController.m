@@ -6,27 +6,27 @@
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
-#import "UserTripActivitiesViewController.h"
-#import "ActivityDetailViewController.h"
+#import "UserTripAccountsViewController.h"
+#import "AccountDetailViewController.h"
 #import "TripDatabase.h"
 #import "BillCell.h"
 #import "MemberInfoViewController.h"
 
-@interface UserTripActivitiesViewController () <NSFetchedResultsControllerDelegate>
+@interface UserTripAccountsViewController () <NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, strong) Activity *selectedActivity;
+@property (nonatomic, strong) Account *selectedAccount;
 @end
 
-@implementation UserTripActivitiesViewController
+@implementation UserTripAccountsViewController
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize trip = _trip;
 @synthesize member = _member;
-@synthesize selectedActivity = _selectedActivity;
+@synthesize selectedAccount = _selectedAccount;
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (!_fetchedResultsController) {
-        NSFetchRequest *fetchRequest = [[TripDatabase dba] fetchRequestForEntity:@"Activity" sortBy:@"date"];
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"trip = %@ and %@ in members", self.trip, self.member];
+        NSFetchRequest *fetchRequest = [[TripDatabase dba] fetchRequestForEntity:@"Account" sortBy:@"date"];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"trip = %@", self.trip];
         _fetchedResultsController = [[TripDatabase dba] fetchedResultsControllerForFetchRequest:fetchRequest sectionNameKeyPath:@"sectionKey" cacheName:@"Root"];
         _fetchedResultsController.delegate = self;
     }
@@ -49,7 +49,7 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    self.navigationItem.title = self.member.name;
+    self.navigationItem.title = [NSString stringWithFormat:@"%@-花费清单", self.member.name];
 }
 
 - (void)viewDidUnload
@@ -83,14 +83,14 @@ static NSString *kShowMemberInfo = @"Show Member Info";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
-    Activity *activity = [[sectionInfo objects] objectAtIndex:0];
-    return [activity.date toFullDate];
+    Account *account = [[sectionInfo objects] objectAtIndex:0];
+    return [account.date toFullDate];
 }
 
 - (void)configureCell:(BillCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    Activity *activity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.title = activity.name;
-    cell.value = activity.cost;
+    Account *account = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.title = account.title;
+    cell.value = account.cost;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,14 +112,14 @@ static NSString *kShowActivityDetailSegue = @"Show Activity Detail";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedActivity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    self.selectedAccount = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self performSegueWithIdentifier:kShowActivityDetailSegue sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kShowActivityDetailSegue]) {
-        ActivityDetailViewController *controller = (ActivityDetailViewController *)segue.destinationViewController;
-        controller.activity = self.selectedActivity;
+        AccountDetailViewController *controller = (AccountDetailViewController *)segue.destinationViewController;
+        controller.account = self.selectedAccount;
     }
     else if ([segue.identifier isEqualToString:kShowMemberInfo]){
         MemberInfoViewController *controller = (MemberInfoViewController*)segue.destinationViewController;

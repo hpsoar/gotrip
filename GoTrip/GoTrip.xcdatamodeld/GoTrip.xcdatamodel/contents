@@ -20,6 +20,7 @@
     </entity>
     <entity name="SubAccount" representedClassName="SubAccount" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="isAA" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="account" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="consumptions" inverseEntity="Account" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Member" inverseName="consumptions" inverseEntity="Member" syncable="YES"/>
     </entity>
@@ -34,7 +35,7 @@
     <elements>
         <element name="Account" positionX="414" positionY="405" width="128" height="150"/>
         <element name="Member" positionX="-63" positionY="333" width="128" height="150"/>
-        <element name="SubAccount" positionX="169" positionY="495" width="128" height="90"/>
+        <element name="SubAccount" positionX="169" positionY="495" width="128" height="105"/>
         <element name="Trip" positionX="187" positionY="189" width="128" height="135"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  SubAccount.m
 //  GoTrip
 //
-//  Created by Aldrich Huang on 10/10/2012.
+//  Created by Aldrich Huang on 11/10/2012.
 //  Copyright (c) 2012 beacon. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 @implementation SubAccount
 
 @dynamic amount;
+@dynamic isAA;
 @dynamic account;
 @dynamic owner;
 

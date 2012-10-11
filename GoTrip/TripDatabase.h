@@ -42,6 +42,8 @@
 
 + (Account *)addAccountWithTitle:(NSString *)title withCost:(NSNumber *) cost toTrip:(Trip *)trip;
 
++ (void)updateConsumptionForAccount:(Account *)account;
+
 //+ (Pay*)payForActivity:(Activity *)activity byMember:(Member *)member;
 //
 //+ (void)addPay:(NSNumber *)amout byMember:(Member *)member forActivity:(Activity *)activity;

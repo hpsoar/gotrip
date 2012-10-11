@@ -9,7 +9,7 @@
 #import "TripDetailViewController.h"
 #import "AddMemberToTripViewController.h"
 #import "TripAccountsViewController.h"
-#import "UserTripActivitiesViewController.h"
+#import "UserTripAccountsViewController.h"
 #import "AddAccountViewController.h"
 #import "AccountDetailViewController.h"
 #import "BillCell.h"
@@ -226,7 +226,7 @@ static NSString *SegueEditTripAccount = @"Edit Trip Account";
         controller.trip = self.trip;
     }
     else if ([segue.identifier isEqualToString:SegueShowTripAccountsForUser]){
-        UserTripActivitiesViewController *controller = (UserTripActivitiesViewController*)segue.destinationViewController;
+        UserTripAccountsViewController *controller = (UserTripAccountsViewController*)segue.destinationViewController;
         controller.trip = self.trip;
         controller.member = self.selectedMember;
     }

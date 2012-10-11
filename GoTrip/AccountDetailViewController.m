@@ -10,6 +10,7 @@
 //#import "ChooseActivityMemberViewController.h"
 #import "ChoosePayerViewController.h"
 #import "EditableCell.h"
+#import "ConsumptionCell.h"
 #import "DateInputTableViewCell.h"
 #import "Datetime+FormattedString.h"
 #import "BillCell.h"
@@ -19,7 +20,7 @@
 #import "Utility.h"
 #import "TripDatabase.h"
 
-@interface AccountDetailViewController () <DateInputTableViewCellDelegate, UITextFieldDelegate>
+@interface AccountDetailViewController () <DateInputTableViewCellDelegate, UITextFieldDelegate, ConsumptionStateDelegate>
 @property (nonatomic, strong) UITextField *currentTextField;
 @end
 
@@ -45,6 +46,15 @@
  
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //self.navigationItem.title = self.activity.name;
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+//                                   initWithTarget:self
+//                                   action:@selector(dismissKeyboard)];
+//    
+//    [self.view addGestureRecognizer:tap];
+}
+
+- (void)dismissKeyboard {
+    [self.currentTextField resignFirstResponder];
 }
 
 - (void)viewDidUnload
@@ -121,7 +131,9 @@
         
         cell.titleLabel.text = @"日期";
         cell.valueTextField.text = [self.account.date toFullDate];
-            cell.valueTextField.tag = -1;
+        cell.datePicker.date = self.account.date;
+        cell.valueTextField.tag = -1;
+        cell.delegate = self;
 
         return cell;
     }
@@ -152,12 +164,20 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForMemberAtRow:(NSInteger)row {
-    EditableCell *cell = [self editableCellForTableView:tableView];
+    static NSString *CellIdentifier = @"ConsumptionCell";
+    ConsumptionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil] lastObject];
+    }
     SubAccount *consumption = [self.account.consumptions.allObjects objectAtIndex:row];
     cell.titleLabel.text = consumption.owner.name;
     cell.valueTextField.text = [Utility numberToCurrencyText:consumption.amount];
     cell.valueTextField.enabled = self.editing;
     cell.valueTextField.tag = row;
+    cell.valueTextField.delegate = self;
+    cell.valueTextField.returnKeyType = UIReturnKeyDone;
+    cell.delegate = self;
+    [self updateConsumptionStateButton:cell.consumptionStateButton toState:consumption.isAA];
     return cell;
 }
 
@@ -208,8 +228,9 @@
     cell.valueTextField.enabled = self.editing;
 
     for (NSInteger i = 0; i < self.account.consumptions.count; ++i) {
-        EditableCell *cell = [self cellatRow:i inSection:2];
+        ConsumptionCell *cell = (ConsumptionCell *)[self cellatRow:i inSection:2];
         cell.valueTextField.enabled = self.editing;
+        cell.consumptionStateButton.enabled = self.editing;
     }
     [self.tableView endUpdates];
 }
@@ -246,7 +267,24 @@ static NSString *SegueChoosePayer = @"Choose Account Payer";
 }
 
 - (void)tableViewCell:(DateInputTableViewCell *)cell didEndEditingWithDate:(NSDate *)value {
-    cell.valueTextField.text = [value toFullDate];
+    //cell.valueTextField.text = [value toFullDate];
+    self.account.date = value;
+    [[TripDatabase dba] save];
+}
+
+- (void)updateConsumptionStateButton:(UIButton *)button toState:(NSNumber *)state {
+    UIColor *color = state.boolValue ? [UIColor blueColor] : [UIColor grayColor];
+    [button setTitleColor:color forState:UIControlStateNormal];
+}
+
+- (void)consumptionStateButtonChanged:(UIButton *)button {
+    SubAccount *consumption = [self.account.consumptions.allObjects objectAtIndex:button.tag];
+    consumption.isAA = [NSNumber numberWithBool:!consumption.isAA.boolValue];
+    
+    [self updateConsumptionStateButton:button toState:consumption.isAA];
+    [TripDatabase updateConsumptionForAccount:self.account];
+    [[TripDatabase dba] save];
+    [self updateConsumptionView];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -263,6 +301,7 @@ static NSString *SegueChoosePayer = @"Choose Account Payer";
                 self.account.cost = [Utility currencyTextToNumber:textField.text];
                 break;
             case -1:
+                // TODO: this is of no use
                 self.account.date = [Utility fullDateFromString:textField.text];
                 break;
             default:
@@ -272,13 +311,24 @@ static NSString *SegueChoosePayer = @"Choose Account Payer";
     else {
         SubAccount *subaccount = [self.account.consumptions.allObjects objectAtIndex:textField.tag];
         subaccount.amount = [Utility currencyTextToNumber:textField.text];
+        subaccount.isAA = [NSNumber numberWithBool:NO]; // once a subaccount is editted manully, it's no a aa subaccount anymore
+        
+        ConsumptionCell *cell = (ConsumptionCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:textField.tag inSection:2]];
+        [self updateConsumptionStateButton:cell.consumptionStateButton toState:subaccount.isAA];
+        [TripDatabase updateConsumptionForAccount:self.account];
+        [self updateConsumptionView];
     }
+    [[TripDatabase dba] save];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField.tag == -2 || textField.tag >= 0)
     textField.text = [Utility currencyTextToNumberText:textField.text];
     return YES;
+}
+
+- (void)updateConsumptionView {
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {

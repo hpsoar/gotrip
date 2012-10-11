@@ -11,7 +11,7 @@
 @class Trip;
 @class Member;
 
-@interface UserTripActivitiesViewController : UITableViewController
+@interface UserTripAccountsViewController : UITableViewController
 @property (nonatomic, strong) Member *member;
 @property (nonatomic, strong) Trip *trip;
 @end

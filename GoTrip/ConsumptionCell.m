@@ -9,6 +9,7 @@
 #import "ConsumptionCell.h"
 
 @implementation ConsumptionCell
+@synthesize consumptionStateButton;
 @synthesize valueTextField;
 @synthesize titleLabel;
 
@@ -27,8 +28,9 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)toggleAA:(id)sender {
-    [self.delegate consumptionStateChanged:self.valueTextField.tag];
+- (IBAction)toggleAA:(UIButton *)sender {
+    sender.tag = self.valueTextField.tag;
+    [self.delegate consumptionStateButtonChanged:sender];
 }
 
 @end

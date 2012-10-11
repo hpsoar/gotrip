@@ -155,6 +155,7 @@ static DBA *g_tripDatabase;
     subaccount.account = account;
     subaccount.owner = member;
     subaccount.amount = [NSNumber numberWithFloat:0];
+    subaccount.isAA = [NSNumber numberWithBool:YES];
     [account addConsumptionsObject:subaccount];
     [member addConsumptionsObject:subaccount];
     return subaccount;
@@ -165,20 +166,63 @@ static DBA *g_tripDatabase;
 //    ns
 //}
 
++ (NSInteger)numberOfAAConsumptionForAccount:(Account *)account {
+    __block NSInteger num = 0;
+    [account.consumptions enumerateObjectsUsingBlock:^(SubAccount *consumption, BOOL *stop) {
+        if (consumption.isAA.boolValue) ++num;
+    }];
+    return num;
+}
+
++ (NSInteger)amountOfCostToAAForAccount:(Account *)account {
+    __block NSInteger amount = account.cost.integerValue;
+    [account.consumptions enumerateObjectsUsingBlock:^(SubAccount *consumption, BOOL *stop) {
+        if (!consumption.isAA.boolValue) amount -= consumption.amount.integerValue;
+    }];
+    return amount;
+}
+
++ (void)AA:(NSInteger)amount Among:(NSInteger)number forAccount:(Account *)account {
+    if (number == 0) return;
+    
+    NSInteger amountPerSubAccount = amount / number;
+    NSInteger remainder = amount % number;
+
+    NSInteger theFirstToAdd1 = rand() % number;
+    NSInteger end = remainder + theFirstToAdd1;
+    NSInteger roundedEnd = end - number;
+    
+    __block NSInteger idx = 0;
+    [account.consumptions enumerateObjectsUsingBlock:^(SubAccount *consumption, BOOL *stop) {
+        if (consumption.isAA.boolValue) {
+            NSInteger amount = amountPerSubAccount;
+            
+            if (idx < roundedEnd || (idx >= theFirstToAdd1 && idx < end)) ++amount;
+            
+            consumption.amount = [NSNumber numberWithInteger:amount];
+            ++idx;
+        }
+    }]; 
+}
+
++ (void)updateConsumptionForAccount:(Account *)account {
+    // TODO: can be optimized if needs to improve efficiency
+    NSInteger numOfAA = [TripDatabase numberOfAAConsumptionForAccount:account];
+    NSInteger amountToAA = [TripDatabase amountOfCostToAAForAccount:account];
+    [TripDatabase AA:amountToAA Among:numOfAA forAccount:account];
+}
+
 + (Account *)addAccountWithTitle:(NSString *)title withCost:(NSNumber*) cost toTrip:(Trip *)trip {
     Account *account = [[TripDatabase dba] insertNewObjectForEntityForName:@"Account"];
     account.title = title;
     account.cost = cost;
     account.date = [NSDate dateWithTimeIntervalSinceNow:0];
     
-    NSNumber *initialConsumption = nil;
-    if (trip.members.count > 0 ) {
-        initialConsumption = [NSNumber numberWithFloat: account.cost.floatValue / trip.members.count];
-    }
     [trip.members enumerateObjectsUsingBlock:^(Member *member, BOOL *stop) {
-        SubAccount *subaccount = [TripDatabase addSubAccountToAccount:account forMember:member];
-        subaccount.amount = initialConsumption;
+        [TripDatabase addSubAccountToAccount:account forMember:member];
     }];
+    
+    [TripDatabase AA:cost.integerValue Among:account.consumptions.count forAccount:account];
     
     account.trip = trip;
     [trip addAccountsObject:account];

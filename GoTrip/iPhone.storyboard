@@ -112,7 +112,7 @@
                     <connections>
                         <segue destination="BRw-uu-KxJ" kind="push" identifier="Show Trip Accounts" id="CaZ-1p-K3k"/>
                         <segue destination="cEE-Gf-XgI" kind="modal" identifier="Add Trip Member" id="V6Y-XT-s6Y"/>
-                        <segue destination="uVh-8u-Ycz" kind="push" identifier="Show Trip Activities For User" id="AQq-W3-PfY"/>
+                        <segue destination="uVh-8u-Ycz" kind="push" identifier="Show Trip Accounts For User" id="AQq-W3-PfY"/>
                         <segue destination="Mqj-pc-JEp" kind="modal" identifier="Add Trip Account" id="pxv-J3-EgJ"/>
                         <segue destination="Iyo-vM-XqN" kind="push" identifier="Edit Trip Account" id="8Tl-nM-SF0"/>
                     </connections>
@@ -151,11 +151,11 @@
             </objects>
             <point key="canvasLocation" x="17" y="269"/>
         </scene>
-        <!--User Trip Activities View Controller-->
+        <!--User Trip Accounts View Controller-->
         <scene sceneID="3Xr-dB-fbv">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94n-Yb-Ebm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="uVh-8u-Ycz" customClass="UserTripActivitiesViewController" sceneMemberID="viewController">
+                <tableViewController id="uVh-8u-Ycz" customClass="UserTripAccountsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6Ne-YF-pgY">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +166,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Hg2-cR-I50">
-                        <barButtonItem key="rightBarButtonItem" title="Info" id="lm0-op-IRe">
+                        <barButtonItem key="rightBarButtonItem" title="个人信息" id="lm0-op-IRe">
                             <connections>
                                 <action selector="showMemberInfo:" destination="uVh-8u-Ycz" id="a7H-ai-fY2"/>
                             </connections>
@@ -446,8 +446,6 @@
         <class className="AddMemberToTripViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddMemberToTripViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addMember:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="cancel:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -490,8 +488,11 @@
                 <relationship kind="outlet" name="emptyTripListImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
-        <class className="UserTripActivitiesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserTripActivitiesViewController.h"/>
+        <class className="UserTripAccountsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserTripAccountsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showMemberInfo:"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -500,7 +501,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8Tl-nM-SF0"/>
         <segue reference="pxv-J3-EgJ"/>
+        <segue reference="leV-wZ-kvJ"/>
     </inferredMetricsTieBreakers>
 </document>
