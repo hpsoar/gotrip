@@ -24,7 +24,7 @@
 
 - (IBAction)addAccount:(id)sender {
     NSString *title = [self cellForRow:0].valueTextField.text;
-    float cost = [self cellForRow:1].valueTextField.text.floatValue;
+    NSNumber *cost = [Utility currencyTextToNumber:[self cellForRow:1].valueTextField.text];
     
     Account *account = [TripDatabase addAccountWithTitle:title withCost:cost toTrip:self.trip];
 
@@ -95,50 +95,11 @@
     else {
         cell.titleLabel.text = @"花费";
         cell.valueTextField.text = @"";
-        cell.valueTextField.placeholder = @"￥0";
+        cell.valueTextField.placeholder = [Utility numberToCurrencyText:nil];
         cell.valueTextField.delegate = [TextFieldDelgates moneyTextFieldDelegate];
     }
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

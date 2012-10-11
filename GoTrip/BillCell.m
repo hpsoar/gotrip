@@ -7,6 +7,7 @@
 //
 
 #import "BillCell.h"
+#import "Utility.h"
 
 @interface BillCell ()
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -23,12 +24,7 @@
 }
 
 - (void)setValue:(NSNumber *)value {
-    if (value) {
-        self.valueLabel.text = [NSString stringWithFormat:@"￥%@", value];
-    }
-    else {
-        self.valueLabel.text = @"￥0";
-    }
+    self.valueLabel.text = [Utility numberToCurrencyText:value];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

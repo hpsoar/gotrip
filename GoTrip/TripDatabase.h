@@ -40,7 +40,7 @@
 
 + (NSNumber *)payByMember:(Member *)member inTrip:(Trip *)trip;
 
-+ (Account *)addAccountWithTitle:(NSString *)title withCost:(float) cost toTrip:(Trip *)trip;
++ (Account *)addAccountWithTitle:(NSString *)title withCost:(NSNumber *) cost toTrip:(Trip *)trip;
 
 //+ (Pay*)payForActivity:(Activity *)activity byMember:(Member *)member;
 //

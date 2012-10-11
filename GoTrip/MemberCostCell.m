@@ -7,6 +7,7 @@
 //
 
 #import "MemberCostCell.h"
+#import "Utility.h"
 
 @interface MemberCostCell()
 @property (nonatomic, weak) IBOutlet UILabel *memberNameLabel;
@@ -22,11 +23,11 @@
 }
 
 - (void)setCost:(NSNumber *)cost {
-    self.costLabel.text = [NSString stringWithFormat:@"-￥%@", cost];
+    self.costLabel.text = [NSString stringWithFormat:@"-%@", [Utility numberToCurrencyText:cost]];
 }
 
 - (void)setPay:(NSNumber *)pay {
-    self.payLabel.text = [NSString stringWithFormat:@"+￥%@", pay];
+    self.payLabel.text = [NSString stringWithFormat:@"+%@", [Utility numberToCurrencyText:pay]];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

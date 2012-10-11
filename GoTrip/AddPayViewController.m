@@ -60,12 +60,12 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    self.amountTextField.text = [self.amountTextField.text substringFromIndex:1];
+    self.amountTextField.text = [Utility currencyTextToNumberText:textField.text];
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    self.amountTextField.text = [NSString stringWithFormat:@"￥%@", self.amountTextField.text];
+    self.amountTextField.text = [Utility numberTextToCurrencyText:textField.text];
     return YES;
 }
 

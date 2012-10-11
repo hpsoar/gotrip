@@ -34,4 +34,16 @@
 
 - (void)setValueIsEmpty:(BOOL)valueIsEmpty { }
 
+- (float)floatValue {
+    return self.valueTextField.text.floatValue;
+}
+
+- (void)setFloatValue:(float)floatValue {
+    
+}
+
+- (NSNumber*)numberValue {
+    return [NSNumber numberWithFloat:self.floatValue];
+}
+
 @end

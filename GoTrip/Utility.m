@@ -36,4 +36,49 @@ static PhoneNumberFormatter *g_phoneNumberFormatter;
     return [phoneTest evaluateWithObject:phone];
 }
 
++ (NSDate *)fullDateFromString:(NSString *)dateString {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    return [formatter dateFromString:dateString];
+}
+
+static NSNumberFormatter *g_currencyFormatter;
+
++ (NSNumberFormatter *)currencyFormatter {
+    if (g_currencyFormatter == nil) {
+        g_currencyFormatter = [[NSNumberFormatter alloc] init];
+        g_currencyFormatter.currencySymbol = @"￥";
+        g_currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    }
+    return g_currencyFormatter;
+}
+
++ (NSString *)numberToCurrencyText:(NSNumber *)number {
+    if (number == nil) return [NSString stringWithFormat:@"%@0.00", [Utility currencyFormatter].currencySymbol];
+    return [[Utility currencyFormatter] stringFromNumber:number];
+}
+
++ (NSString *)numberToText:(NSNumber *)number {
+    if (number == nil || number.floatValue == 0) return @"";
+    return [NSString stringWithFormat:@"%@", number];
+}
+
++ (BOOL)textContainsCurrencySymbol:(NSString *)text {
+    return  [text rangeOfString:[Utility currencyFormatter].currencySymbol].location == 0;
+}
+
++ (NSNumber *)currencyTextToNumber:(NSString *)text {
+    if ([Utility textContainsCurrencySymbol:text])
+        return [[Utility currencyFormatter] numberFromString:text];
+    else return [NSNumber numberWithFloat:text.floatValue];
+}
+
++ (NSString *)numberTextToCurrencyText:(NSString *)text {
+    return [Utility numberToCurrencyText:[Utility currencyTextToNumber:text]];
+}
+
++ (NSString *)currencyTextToNumberText:(NSString *)text {
+    return [Utility numberToText: [Utility currencyTextToNumber:text]];
+}
+
 @end

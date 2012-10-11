@@ -35,7 +35,7 @@
 
 - (void)loadCellData:(Trip *)trip {
     self.titleLabel.text = trip.name;
-    self.costLabel.text = [NSString stringWithFormat:@"￥%@", [TripDatabase costForTrip:trip]];
+    self.costLabel.text = [Utility numberToCurrencyText:[TripDatabase costForTrip:trip]];
     self.startDateLabel.text = [trip.startDate toFullDate];
     self.endDateLabel.text = trip.endDate ? [trip.endDate toShortDate] : @"现在";
     self.numberOfMemberLabel.text = [NSString stringWithFormat:@"%d", trip.members.count];

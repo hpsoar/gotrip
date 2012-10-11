@@ -16,13 +16,31 @@
 #import "SubAccount.h"
 #import "Member.h"
 #import "TextFieldDelegate.h"
+#import "Utility.h"
+#import "TripDatabase.h"
 
 @interface AccountDetailViewController () <DateInputTableViewCellDelegate>
-
+@property (nonatomic, strong) UITextField *titleTextField;
+@property (nonatomic, strong) UITextField *costTextField;
+@property (nonatomic, strong) UITextField *dateTextField;
+@property (nonatomic, strong) NSMutableArray *consumptionTextFields;
 @end
 
 @implementation AccountDetailViewController
 @synthesize account = _account;
+@synthesize titleTextField = _titleTextField;
+@synthesize costTextField = _costTextField;
+@synthesize dateTextField = _dateTextField;
+@synthesize consumptionTextFields = _consumptionTextFields;
+
+- (NSMutableArray *)consumptionTextFields {
+    if (_consumptionTextFields == nil) {
+        _consumptionTextFields = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0; i < self.account.consumptions.count; ++i)
+            [_consumptionTextFields addObject:[NSNull null]];
+    }
+    return _consumptionTextFields;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -53,7 +71,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -112,60 +130,55 @@
         if (!cell) {
             cell = [[DateInputTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
+        //cell.valueTextField.enabled = self.editing;
+        if (!self.editing) {
         cell.titleLabel.text = @"日期";
         cell.valueTextField.text = [self.account.date toFullDate];
+            self.dateTextField = cell.valueTextField;
+        }
         return cell;
     }
     else {
         EditableCell *cell = [self editableCellForTableView:tableView];
-
+        cell.valueTextField.enabled = self.editing;
+        if (!self.editing) {
         if (row == 0) {
             cell.titleLabel.text = @"标题";
             cell.valueTextField.text = self.account.title;
+            self.titleTextField = cell.valueTextField;
         }
         else {
             cell.titleLabel.text = @"花费";
-            cell.valueTextField.text = [NSString stringWithFormat:@"￥%@", self.account.cost];
+            NSLog(@"---%@, %@", cell.valueTextField.text, self.account.cost);
+            cell.valueTextField.text = [Utility numberToCurrencyText: self.account.cost];
+            NSLog(@"%@, %@", cell.valueTextField.text, self.account.cost);
             cell.valueTextField.delegate = [TextFieldDelgates moneyTextFieldDelegate];
+            self.costTextField = cell.valueTextField;
+        }
         }
         return cell;
     }
-}
-
-- (BillCell *)costCellForTableView:(UITableView *)tableView {
-    static NSString *CellIdentifier = @"BillCell";
-    BillCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil] lastObject];
-    }
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    return cell;
-}
-
-- (UITableViewCell *)chooserCellForTableView:(UITableView *)tableView withTitle:(NSString *)title {
-    static NSString *CellIdentifier = @"ChooserCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    cell.textLabel.text = title;
-    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForPayerAtRow:(NSInteger) row {
     EditableCell *cell = [self editableCellForTableView:tableView];
     cell.titleLabel.text = @"付款人";
     cell.valueTextField.text = self.account.payer.name;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForMemberAtRow:(NSInteger)row {
-    BillCell *cell = [self costCellForTableView:tableView];
-    SubAccount *consumption = [self.account.consumptions.allObjects objectAtIndex:row];
-    cell.title = consumption.owner.name;
-    cell.value = consumption.amount;
+    EditableCell *cell = [self editableCellForTableView:tableView];
+    if (!self.editing) {
+        SubAccount *consumption = [self.account.consumptions.allObjects objectAtIndex:row];
+        cell.titleLabel.text = consumption.owner.name;
+        cell.valueTextField.text = [Utility numberToCurrencyText:consumption.amount];
+        cell.valueTextField.delegate = [TextFieldDelgates moneyTextFieldDelegate];
+        cell.valueTextField.enabled = self.editing;
+        [self.consumptionTextFields replaceObjectAtIndex:row withObject:cell.valueTextField];
+    }
     return cell;
 }
 
@@ -183,44 +196,73 @@
     }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleNone;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.editing) {
+        if (indexPath.section == 1)  return indexPath;
+        if (indexPath.section == 0 && indexPath.row == 2) return indexPath;
+        return nil;
+    }
+    else {
+        if (indexPath.section == 1) return nil;
+        if (indexPath.section == 0 && indexPath.row == 2) return nil;
+        return indexPath;
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (EditableCell *)cellatRow:(NSInteger)row inSection:(NSInteger)section {
+    return (EditableCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 }
-*/
+
+- (void)updateAccountInfo {
+    if (self.titleTextField.text.length > 0) self.account.title = self.titleTextField.text;
+    self.account.cost = [Utility currencyTextToNumber:self.costTextField.text];
+    self.account.date = [Utility fullDateFromString:self.dateTextField.text];
+
+    NSLog(@"date=%@", self.account.date);
+}
+
+- (void)updateSubAccounts {
+    for (NSInteger i = 0; i < self.account.consumptions.count; ++i) {
+        UITextField *textField = [self.consumptionTextFields objectAtIndex:i];
+        SubAccount *subAccount = [self.account.consumptions.allObjects objectAtIndex:i];
+        subAccount.amount = [Utility currencyTextToNumber:textField.text];
+    };
+}
+
+- (void)changeCellState {
+    [self.tableView beginUpdates];
+    EditableCell *cell = [self cellatRow:0 inSection:0];
+    cell.valueTextField.enabled = self.editing;
+    cell = [self cellatRow:1 inSection:0];
+    cell.valueTextField.enabled = self.editing;
+
+    for (NSInteger i = 0; i < self.account.consumptions.count; ++i) {
+        EditableCell *cell = [self cellatRow:i inSection:2];
+        cell.valueTextField.enabled = self.editing;
+    }
+    [self.tableView endUpdates];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.navigationItem setHidesBackButton:editing animated:YES];
+    
+    if (!self.editing) {
+        [self updateAccountInfo];
+        [self updateSubAccounts];
+        [[TripDatabase dba] save];
+    }
+    
+    [self changeCellState];
+}
 
 static NSString *SegueChoosePayer = @"Choose Account Payer";
 
@@ -241,7 +283,7 @@ static NSString *SegueChoosePayer = @"Choose Account Payer";
 }
 
 - (void)tableViewCell:(DateInputTableViewCell *)cell didEndEditingWithDate:(NSDate *)value {
-    cell.detailTextLabel.text = [value toFullDate];
+    cell.valueTextField.text = [value toFullDate];
 }
 
 @end

@@ -43,13 +43,12 @@
 @implementation MoneyTextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if (textField.text.length > 0)
-        textField.text = [textField.text substringFromIndex:1];
+    textField.text = [Utility currencyTextToNumberText:textField.text];
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    textField.text = [NSString stringWithFormat:@"￥%@", textField.text];
+    textField.text = [Utility numberTextToCurrencyText:textField.text];
     return YES;
 }
 

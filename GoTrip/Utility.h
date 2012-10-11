@@ -19,4 +19,14 @@
 
 + (PhoneNumberFormatter *)phoneNumberFormatter;
 
++ (NSDate *)fullDateFromString:(NSString *)dateString;
+
+//+ (NSNumberFormatter *)currencyFormatter;
+
++ (NSString *)numberToCurrencyText:(NSNumber *)number;
++ (NSString *)numberToText:(NSNumber *)number;
++ (NSNumber *)currencyTextToNumber:(NSString *)text;
++ (NSString *)numberTextToCurrencyText:(NSString *)text;
++ (NSString *)currencyTextToNumberText:(NSString *)text;
+
 @end

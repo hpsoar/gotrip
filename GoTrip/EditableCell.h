@@ -14,4 +14,8 @@
 
 @property BOOL valueIsEmpty;
 
+@property float floatValue;
+
+@property (weak, nonatomic) NSNumber *numberValue;
+
 @end

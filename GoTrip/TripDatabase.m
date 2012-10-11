@@ -160,14 +160,24 @@ static DBA *g_tripDatabase;
     return subaccount;
 }
 
-+ (Account *)addAccountWithTitle:(NSString *)title withCost:(float) cost toTrip:(Trip *)trip {
+//+ (NSArray *)AAconsumptionOfAmount:(float)cost Among:(NSInteger)numberOfPerson {
+//    if (numberOfPerson == 0) return nil;
+//    ns
+//}
+
++ (Account *)addAccountWithTitle:(NSString *)title withCost:(NSNumber*) cost toTrip:(Trip *)trip {
     Account *account = [[TripDatabase dba] insertNewObjectForEntityForName:@"Account"];
     account.title = title;
-    account.cost = [NSNumber numberWithFloat:cost];
+    account.cost = cost;
     account.date = [NSDate dateWithTimeIntervalSinceNow:0];
     
+    NSNumber *initialConsumption = nil;
+    if (trip.members.count > 0 ) {
+        initialConsumption = [NSNumber numberWithFloat: account.cost.floatValue / trip.members.count];
+    }
     [trip.members enumerateObjectsUsingBlock:^(Member *member, BOOL *stop) {
-        [TripDatabase addSubAccountToAccount:account forMember:member];
+        SubAccount *subaccount = [TripDatabase addSubAccountToAccount:account forMember:member];
+        subaccount.amount = initialConsumption;
     }];
     
     account.trip = trip;

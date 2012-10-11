@@ -133,6 +133,8 @@
     newCell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     self.account.payer = member;
+    
+    [[TripDatabase dba] save];
 }
 
 
