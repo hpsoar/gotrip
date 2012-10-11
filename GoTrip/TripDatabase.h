@@ -44,6 +44,9 @@
 
 + (void)updateConsumptionForAccount:(Account *)account;
 
++ (NSMutableArray *)balanceForMember:(Member*)member inTrip:(Trip*)trip;
++ (NSNumber *)balanceForMember:(Member *)member inAccount:(Account *)account;
+
 //+ (Pay*)payForActivity:(Activity *)activity byMember:(Member *)member;
 //
 //+ (void)addPay:(NSNumber *)amout byMember:(Member *)member forActivity:(Activity *)activity;

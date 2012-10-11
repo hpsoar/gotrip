@@ -15,6 +15,7 @@
 @interface UserTripAccountsViewController () <NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) Account *selectedAccount;
+@property (nonatomic, strong) NSMutableArray *balanceAccounts;
 @end
 
 @implementation UserTripAccountsViewController
@@ -22,15 +23,37 @@
 @synthesize trip = _trip;
 @synthesize member = _member;
 @synthesize selectedAccount = _selectedAccount;
+@synthesize balanceAccounts = _balanceAccounts;
+
+- (NSMutableArray *)balanceAccounts {
+    if (_balanceAccounts == nil) {
+        _balanceAccounts = [[NSMutableArray alloc] init];
+        for (NSInteger section = 0; section < self.fetchedResultsController.sections.count; ++section) {
+            NSMutableArray *balanceInSection = [[NSMutableArray alloc] init];
+            NSInteger numberOfRows = [self numberOfRowsInSection:section];
+            for (NSInteger i = 0; i < numberOfRows; ++i) {
+                Account *account = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:section]];
+                [balanceInSection addObject:[TripDatabase balanceForMember:self.member inAccount:account]];
+            }
+            [_balanceAccounts addObject:balanceInSection];
+        }
+    }
+    return _balanceAccounts;
+}
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (!_fetchedResultsController) {
-        NSFetchRequest *fetchRequest = [[TripDatabase dba] fetchRequestForEntity:@"Account" sortBy:@"date"];
+        NSFetchRequest *fetchRequest = [[TripDatabase dba] fetchRequestForEntity:@"Account" sortBy:nil];
+        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"trip = %@", self.trip];
         _fetchedResultsController = [[TripDatabase dba] fetchedResultsControllerForFetchRequest:fetchRequest sectionNameKeyPath:@"sectionKey" cacheName:@"Root"];
         _fetchedResultsController.delegate = self;
     }
     return _fetchedResultsController;
+}
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section {
+    return [[self.fetchedResultsController.sections objectAtIndex:section] numberOfObjects];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -78,7 +101,7 @@ static NSString *kShowMemberInfo = @"Show Member Info";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.fetchedResultsController.sections objectAtIndex:section] numberOfObjects];
+    return [self numberOfRowsInSection:section];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -90,7 +113,7 @@ static NSString *kShowMemberInfo = @"Show Member Info";
 - (void)configureCell:(BillCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     Account *account = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.title = account.title;
-    cell.value = account.cost;
+    cell.value = [[self.balanceAccounts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,6 +148,48 @@ static NSString *kShowActivityDetailSegue = @"Show Activity Detail";
         MemberInfoViewController *controller = (MemberInfoViewController*)segue.destinationViewController;
         controller.member = self.member;
     }
+}
+
+#pragma mark - UIFetchedResultsControllerDelegate
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:YES];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:(BillCell *)[self.tableView cellForRowAtIndexPath:indexPath] forRowAtIndexPath:indexPath];
+            break;
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
+            break;
+    }
+    self.balanceAccounts = nil;
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+        default:
+            break;
+    }
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
 }
 
 @end

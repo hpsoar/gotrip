@@ -8,7 +8,6 @@
 
 #import "ChoosePayerViewController.h"
 #import "TripDatabase.h"
-#import "BillCell.h"
 #import "AddPayViewController.h"
 
 @interface ChoosePayerViewController ()

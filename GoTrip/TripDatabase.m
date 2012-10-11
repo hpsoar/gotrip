@@ -183,7 +183,7 @@ static DBA *g_tripDatabase;
 }
 
 + (void)AA:(NSInteger)amount Among:(NSInteger)number forAccount:(Account *)account {
-    if (number == 0) return;
+    if (number == 0 || amount < 0) return;
     
     NSInteger amountPerSubAccount = amount / number;
     NSInteger remainder = amount % number;
@@ -230,6 +230,26 @@ static DBA *g_tripDatabase;
     [[TripDatabase dba] save];
     
     return account;
+}
+
++ (NSNumber *)balanceForMember:(Member *)member inAccount:(Account *)account {
+    __block NSInteger balance = 0;
+    if (account.payer == member) balance += account.cost.integerValue;
+    [account.consumptions enumerateObjectsUsingBlock:^(SubAccount *subAccount, BOOL *stop) {
+        if (subAccount.owner == member) {
+            balance -= subAccount.amount.integerValue;
+            *stop = YES;
+        }
+    }];
+    return [NSNumber numberWithInteger:balance];
+}
+
++ (NSMutableArray *)balanceForMember:(Member*)member inTrip:(Trip*)trip {
+    __block NSMutableArray *balanceAccounts = [[NSMutableArray alloc] init];
+    [trip.accounts enumerateObjectsUsingBlock:^(Account *account, BOOL *stop) {
+        [balanceAccounts addObject:[TripDatabase balanceForMember:member inAccount:account]];
+    }];
+    return balanceAccounts;
 }
 
 @end

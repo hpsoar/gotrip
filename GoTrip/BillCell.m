@@ -24,7 +24,13 @@
 }
 
 - (void)setValue:(NSNumber *)value {
-    self.valueLabel.text = [Utility numberToCurrencyText:value];
+    NSString *text = [Utility numberToCurrencyText:[NSNumber numberWithInteger:ABS(value.integerValue)]];
+    NSString *prefix = @"";
+    if (value.integerValue < 0) {
+        prefix = @"-";
+        self.valueLabel.textColor = [UIColor redColor];
+    }
+    self.valueLabel.text = [NSString stringWithFormat:@"%@%@", prefix, text];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

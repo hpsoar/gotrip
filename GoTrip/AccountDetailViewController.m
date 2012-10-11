@@ -13,7 +13,6 @@
 #import "ConsumptionCell.h"
 #import "DateInputTableViewCell.h"
 #import "Datetime+FormattedString.h"
-#import "BillCell.h"
 #import "SubAccount.h"
 #import "Member.h"
 #import "TextFieldDelegate.h"
@@ -175,8 +174,10 @@
     cell.valueTextField.enabled = self.editing;
     cell.valueTextField.tag = row;
     cell.valueTextField.delegate = self;
-    cell.valueTextField.returnKeyType = UIReturnKeyDone;
+    //cell.valueTextField.returnKeyType = UIReturnKeyDone;
     cell.delegate = self;
+    cell.consumptionStateButton.enabled = self.editing;
+    
     [self updateConsumptionStateButton:cell.consumptionStateButton toState:consumption.isAA];
     return cell;
 }
@@ -328,13 +329,28 @@ static NSString *SegueChoosePayer = @"Choose Account Payer";
 }
 
 - (void)updateConsumptionView {
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+    // TODO: the following is bad
+    //[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView beginUpdates];
+    for (NSInteger i = 0; i < self.account.consumptions.count; ++i) {
+        ConsumptionCell *cell = (ConsumptionCell *)[self cellatRow:i inSection:2];
+        cell.valueTextField.enabled = self.editing;
+        cell.consumptionStateButton.enabled = self.editing;
+        SubAccount *subaccount = [self.account.consumptions.allObjects objectAtIndex:i];
+        cell.valueTextField.text = [Utility numberToCurrencyText:subaccount.amount];
+    }
+    [self.tableView endUpdates];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     if (textField.tag == -2 || textField.tag >= 0)
     textField.text = [Utility numberTextToCurrencyText:textField.text];
     return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 @end

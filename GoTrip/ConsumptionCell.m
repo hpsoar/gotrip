@@ -31,6 +31,7 @@
 - (IBAction)toggleAA:(UIButton *)sender {
     sender.tag = self.valueTextField.tag;
     [self.delegate consumptionStateButtonChanged:sender];
+    [sender resignFirstResponder];
 }
 
 @end
