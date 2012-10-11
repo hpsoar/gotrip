@@ -101,6 +101,7 @@ static NSString *SegueShowAccountDetail = @"Show Trip Account Detail";
 //        [self.groupedActivities addObject:activityGroup];
 //    }
 //    NSLog(@"%@", self.activeDays);
+    self.fetchedResultsController = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

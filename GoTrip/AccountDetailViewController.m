@@ -19,28 +19,13 @@
 #import "Utility.h"
 #import "TripDatabase.h"
 
-@interface AccountDetailViewController () <DateInputTableViewCellDelegate>
-@property (nonatomic, strong) UITextField *titleTextField;
-@property (nonatomic, strong) UITextField *costTextField;
-@property (nonatomic, strong) UITextField *dateTextField;
-@property (nonatomic, strong) NSMutableArray *consumptionTextFields;
+@interface AccountDetailViewController () <DateInputTableViewCellDelegate, UITextFieldDelegate>
+@property (nonatomic, strong) UITextField *currentTextField;
 @end
 
 @implementation AccountDetailViewController
 @synthesize account = _account;
-@synthesize titleTextField = _titleTextField;
-@synthesize costTextField = _costTextField;
-@synthesize dateTextField = _dateTextField;
-@synthesize consumptionTextFields = _consumptionTextFields;
-
-- (NSMutableArray *)consumptionTextFields {
-    if (_consumptionTextFields == nil) {
-        _consumptionTextFields = [[NSMutableArray alloc] init];
-        for (NSInteger i = 0; i < self.account.consumptions.count; ++i)
-            [_consumptionTextFields addObject:[NSNull null]];
-    }
-    return _consumptionTextFields;
-}
+@synthesize currentTextField = _currentTextField;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -71,7 +56,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    //[self.tableView reloadData];
+    
+    [self.tableView reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -105,7 +91,7 @@
         case 0:
             return nil;
         case 1:
-            return @"支付账单";
+            return nil; //@"支付账单";
         case 2:
             return @"消费账单";
         default:
@@ -118,6 +104,7 @@
     EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil] lastObject];
+        cell.valueTextField.delegate = self;
     }
     return cell;
 }
@@ -129,32 +116,27 @@
         DateInputTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (!cell) {
             cell = [[DateInputTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.valueTextField.delegate = self;
         }
-        //cell.valueTextField.enabled = self.editing;
-        if (!self.editing) {
+        
         cell.titleLabel.text = @"日期";
         cell.valueTextField.text = [self.account.date toFullDate];
-            self.dateTextField = cell.valueTextField;
-        }
+            cell.valueTextField.tag = -1;
+
         return cell;
     }
     else {
         EditableCell *cell = [self editableCellForTableView:tableView];
         cell.valueTextField.enabled = self.editing;
-        if (!self.editing) {
         if (row == 0) {
             cell.titleLabel.text = @"标题";
             cell.valueTextField.text = self.account.title;
-            self.titleTextField = cell.valueTextField;
+            cell.valueTextField.tag = -3;
         }
         else {
             cell.titleLabel.text = @"花费";
-            NSLog(@"---%@, %@", cell.valueTextField.text, self.account.cost);
             cell.valueTextField.text = [Utility numberToCurrencyText: self.account.cost];
-            NSLog(@"%@, %@", cell.valueTextField.text, self.account.cost);
-            cell.valueTextField.delegate = [TextFieldDelgates moneyTextFieldDelegate];
-            self.costTextField = cell.valueTextField;
-        }
+            cell.valueTextField.tag = -2;
         }
         return cell;
     }
@@ -171,14 +153,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForMemberAtRow:(NSInteger)row {
     EditableCell *cell = [self editableCellForTableView:tableView];
-    if (!self.editing) {
-        SubAccount *consumption = [self.account.consumptions.allObjects objectAtIndex:row];
-        cell.titleLabel.text = consumption.owner.name;
-        cell.valueTextField.text = [Utility numberToCurrencyText:consumption.amount];
-        cell.valueTextField.delegate = [TextFieldDelgates moneyTextFieldDelegate];
-        cell.valueTextField.enabled = self.editing;
-        [self.consumptionTextFields replaceObjectAtIndex:row withObject:cell.valueTextField];
-    }
+    SubAccount *consumption = [self.account.consumptions.allObjects objectAtIndex:row];
+    cell.titleLabel.text = consumption.owner.name;
+    cell.valueTextField.text = [Utility numberToCurrencyText:consumption.amount];
+    cell.valueTextField.enabled = self.editing;
+    cell.valueTextField.tag = row;
     return cell;
 }
 
@@ -221,22 +200,6 @@
     return (EditableCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
-- (void)updateAccountInfo {
-    if (self.titleTextField.text.length > 0) self.account.title = self.titleTextField.text;
-    self.account.cost = [Utility currencyTextToNumber:self.costTextField.text];
-    self.account.date = [Utility fullDateFromString:self.dateTextField.text];
-
-    NSLog(@"date=%@", self.account.date);
-}
-
-- (void)updateSubAccounts {
-    for (NSInteger i = 0; i < self.account.consumptions.count; ++i) {
-        UITextField *textField = [self.consumptionTextFields objectAtIndex:i];
-        SubAccount *subAccount = [self.account.consumptions.allObjects objectAtIndex:i];
-        subAccount.amount = [Utility currencyTextToNumber:textField.text];
-    };
-}
-
 - (void)changeCellState {
     [self.tableView beginUpdates];
     EditableCell *cell = [self cellatRow:0 inSection:0];
@@ -253,11 +216,10 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
-    [self.navigationItem setHidesBackButton:editing animated:YES];
+    //[self.navigationItem setHidesBackButton:editing animated:YES];
     
     if (!self.editing) {
-        [self updateAccountInfo];
-        [self updateSubAccounts];
+        [self.currentTextField resignFirstResponder];
         [[TripDatabase dba] save];
     }
     
@@ -278,12 +240,51 @@ static NSString *SegueChoosePayer = @"Choose Account Payer";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
+        [self.currentTextField resignFirstResponder];
         [self performSegueWithIdentifier:SegueChoosePayer sender:self];
     }
 }
 
 - (void)tableViewCell:(DateInputTableViewCell *)cell didEndEditingWithDate:(NSDate *)value {
     cell.valueTextField.text = [value toFullDate];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.currentTextField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField.tag < 0) {
+        switch (textField.tag) {
+            case -3:
+                if (textField.text.length > 0) self.account.title = textField.text;
+                break;
+            case -2:
+                self.account.cost = [Utility currencyTextToNumber:textField.text];
+                break;
+            case -1:
+                self.account.date = [Utility fullDateFromString:textField.text];
+                break;
+            default:
+                break;
+        }
+    }
+    else {
+        SubAccount *subaccount = [self.account.consumptions.allObjects objectAtIndex:textField.tag];
+        subaccount.amount = [Utility currencyTextToNumber:textField.text];
+    }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField.tag == -2 || textField.tag >= 0)
+    textField.text = [Utility currencyTextToNumberText:textField.text];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if (textField.tag == -2 || textField.tag >= 0)
+    textField.text = [Utility numberTextToCurrencyText:textField.text];
+    return YES;
 }
 
 @end
